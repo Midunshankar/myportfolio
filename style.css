@@ -393,3 +393,21 @@ footer p {
         width: fit-content;
     }
 }
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-links a.active {
+    color: #2563eb;
+}
+
+header.scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
