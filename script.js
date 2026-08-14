@@ -1,52 +1,81 @@
-/* =========================
-   TYPING ANIMATION
-========================= */
+/* ========================================
+   PORTFOLIO JAVASCRIPT
+   Midun Shankar K
+======================================== */
+
+
+/* ========================================
+   PAGE LOAD
+======================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const typed = new Typed(".text", {
-        strings: [
-            "B.Com IT Student",
-            "Web Developer",
-            "Python Learner",
-            "AI Enthusiast",
-            "Frontend Developer"
-        ],
 
-        typeSpeed: 70,
-        backSpeed: 50,
-        backDelay: 1000,
-        loop: true
-    });
+    /* ========================================
+       TYPING ANIMATION
+    ======================================== */
+
+    if (document.querySelector(".text")) {
+
+        new Typed(".text", {
+
+            strings: [
+                "B.Com IT Student",
+                "Web Developer",
+                "Python Learner",
+                "AI Enthusiast",
+                "Frontend Developer"
+            ],
+
+            typeSpeed: 70,
+            backSpeed: 50,
+            backDelay: 1000,
+            loop: true
+
+        });
+
+    }
 
 
-    /* =========================
+    /* ========================================
        MOBILE MENU
-    ========================= */
+    ======================================== */
 
     const menuBtn = document.querySelector(".menu-btn");
     const navbar = document.querySelector(".navbar");
 
-    menuBtn.addEventListener("click", function () {
+    if (menuBtn && navbar) {
 
-        navbar.classList.toggle("active");
+        menuBtn.addEventListener("click", function () {
 
-        const icon = menuBtn.querySelector("i");
+            navbar.classList.toggle("active");
 
-        if (navbar.classList.contains("active")) {
-            icon.classList.remove("bx-menu");
-            icon.classList.add("bx-x");
-        } else {
-            icon.classList.remove("bx-x");
-            icon.classList.add("bx-menu");
-        }
+            const icon = menuBtn.querySelector("i");
 
-    });
+            if (icon) {
+
+                if (navbar.classList.contains("active")) {
+
+                    icon.classList.remove("bx-menu");
+                    icon.classList.add("bx-x");
+
+                } else {
+
+                    icon.classList.remove("bx-x");
+                    icon.classList.add("bx-menu");
+
+                }
+
+            }
+
+        });
+
+    }
 
 
-    /* =========================
+    /* ========================================
        CLOSE MOBILE MENU
-    ========================= */
+    ======================================== */
 
     const navLinks = document.querySelectorAll(".navbar a");
 
@@ -54,25 +83,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
         link.addEventListener("click", function () {
 
-            navbar.classList.remove("active");
+            if (navbar) {
+                navbar.classList.remove("active");
+            }
 
-            const icon = menuBtn.querySelector("i");
+            if (menuBtn) {
 
-            icon.classList.remove("bx-x");
-            icon.classList.add("bx-menu");
+                const icon = menuBtn.querySelector("i");
+
+                if (icon) {
+
+                    icon.classList.remove("bx-x");
+                    icon.classList.add("bx-menu");
+
+                }
+
+            }
 
         });
 
     });
 
 
-    /* =========================
+    /* ========================================
        ACTIVE NAVIGATION
-    ========================= */
+    ======================================== */
 
     const sections = document.querySelectorAll("section");
 
-    window.addEventListener("scroll", function () {
+    function updateActiveNavigation() {
 
         let currentSection = "";
 
@@ -101,9 +140,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             link.classList.remove("active");
 
+            const linkTarget =
+                link.getAttribute("href");
+
             if (
-                link.getAttribute("href") ===
-                "#" + currentSection
+                linkTarget === "#" + currentSection
             ) {
 
                 link.classList.add("active");
@@ -112,12 +153,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
-    });
+    }
 
 
-    /* =========================
+    window.addEventListener(
+        "scroll",
+        updateActiveNavigation
+    );
+
+    updateActiveNavigation();
+
+
+    /* ========================================
        CURRENT YEAR
-    ========================= */
+    ======================================== */
 
     const yearElement =
         document.getElementById("current-year");
@@ -130,22 +179,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =========================
+    /* ========================================
        CONTACT FORM
-    ========================= */
+    ======================================== */
 
     const contactForm =
         document.querySelector(".contact-form");
 
-    contactForm.addEventListener("submit", function (event) {
+    if (contactForm) {
 
-        event.preventDefault();
+        contactForm.addEventListener(
+            "submit",
+            function (event) {
 
-        alert("Thank you for your message!");
+                event.preventDefault();
 
-        contactForm.reset();
+                alert(
+                    "Thank you for your message!"
+                );
 
-    });
+                contactForm.reset();
+
+            }
+        );
+
+    }
+
 
 });
 ```
