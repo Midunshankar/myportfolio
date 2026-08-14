@@ -1,24 +1,20 @@
-/* ========================================
+
+/* =========================================
    PORTFOLIO JAVASCRIPT
    Midun Shankar K
-======================================== */
-
-
-/* ========================================
-   PAGE LOAD
-======================================== */
+========================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-
-    /* ========================================
+    /* =========================================
        TYPING ANIMATION
-    ======================================== */
+    ========================================= */
 
-    if (document.querySelector(".text")) {
+    const typingElement = document.querySelector(".text");
+
+    if (typingElement && typeof Typed !== "undefined") {
 
         new Typed(".text", {
-
             strings: [
                 "B.Com IT Student",
                 "Web Developer",
@@ -31,15 +27,14 @@ document.addEventListener("DOMContentLoaded", function () {
             backSpeed: 50,
             backDelay: 1000,
             loop: true
-
         });
 
     }
 
 
-    /* ========================================
+    /* =========================================
        MOBILE MENU
-    ======================================== */
+    ========================================= */
 
     const menuBtn = document.querySelector(".menu-btn");
     const navbar = document.querySelector(".navbar");
@@ -73,11 +68,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* ========================================
+    /* =========================================
        CLOSE MOBILE MENU
-    ======================================== */
+    ========================================= */
 
-    const navLinks = document.querySelectorAll(".navbar a");
+    const navLinks =
+        document.querySelectorAll(".navbar a");
 
     navLinks.forEach(function (link) {
 
@@ -89,7 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (menuBtn) {
 
-                const icon = menuBtn.querySelector("i");
+                const icon =
+                    menuBtn.querySelector("i");
 
                 if (icon) {
 
@@ -105,11 +102,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    /* ========================================
+    /* =========================================
        ACTIVE NAVIGATION
-    ======================================== */
+    ========================================= */
 
-    const sections = document.querySelectorAll("section");
+    const sections =
+        document.querySelectorAll("section");
+
 
     function updateActiveNavigation() {
 
@@ -125,7 +124,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (
                 window.scrollY >= sectionTop &&
-                window.scrollY < sectionTop + sectionHeight
+                window.scrollY <
+                sectionTop + sectionHeight
             ) {
 
                 currentSection =
@@ -144,7 +144,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 link.getAttribute("href");
 
             if (
-                linkTarget === "#" + currentSection
+                linkTarget ===
+                "#" + currentSection
             ) {
 
                 link.classList.add("active");
@@ -164,9 +165,9 @@ document.addEventListener("DOMContentLoaded", function () {
     updateActiveNavigation();
 
 
-    /* ========================================
+    /* =========================================
        CURRENT YEAR
-    ======================================== */
+    ========================================= */
 
     const yearElement =
         document.getElementById("current-year");
@@ -179,9 +180,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* ========================================
+    /* =========================================
        CONTACT FORM
-    ======================================== */
+    ========================================= */
 
     const contactForm =
         document.querySelector(".contact-form");
@@ -204,7 +205,6 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     }
-
 
 });
 ```
