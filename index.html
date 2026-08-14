@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,125 +6,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Midun Shankar K | Portfolio</title>
-
-    <!-- Boxicons -->
-    <link
-        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-        rel="stylesheet"
-    >
+    <title>Midun Shankar K| Portfolio</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="stylesheet.css">
-
-    <!-- Typed.js -->
-    <script
-        src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js">
-    </script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <!-- ================= HEADER ================= -->
 
-    <header class="header">
-
-        <a href="#home" class="logo">
-            Midun Shankar K
-        </a>
-
-        <button class="menu-btn" aria-label="Open Menu">
-            <i class="bx bx-menu"></i>
-        </button>
-
+    <header>
         <nav class="navbar">
 
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+            <div class="logo">
+                Midun Shankar K
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="menu-btn" aria-label="Open Menu">
+                ☰
+            </button>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links">
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#skills">Skills</a>
+                </li>
+
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
 
         </nav>
-
     </header>
 
 
-    <!-- ================= HOME ================= -->
+    <!-- ================= HERO SECTION ================= -->
 
-    <section class="home" id="home">
+    <section id="home" class="hero">
 
-        <div class="home-content">
+        <div class="hero-container">
 
-            <h3>Hello, It's Me</h3>
+            <div class="hero-content">
 
-            <h1>Midun Shankar K</h1>
+                <h1>
+                    Hello, I'm
+                    <span>Midun Shankar K</span>
+                </h1>
 
-            <h3>
-                And I'm a <span class="text"></span>
-            </h3>
+                <h2>
+                    I am a <span class="typing"></span>
+                </h2>
 
-            <p>
-                I am a B.Com IT student interested in programming,
-                web development, artificial intelligence and
-                modern technologies.
-            </p>
+                <p>
+                    I am a passionate student interested in programming,
+                    web development, and AI technologies.
+                </p>
 
-
-            <!-- SOCIAL MEDIA -->
-
-            <div class="home-sci">
-
-                <a href="#" aria-label="LinkedIn">
-                    <i class="bx bxl-linkedin"></i>
+                <a href="#about" class="btn">
+                    About Me
                 </a>
 
-                <a href="#" aria-label="GitHub">
-                    <i class="bx bxl-github"></i>
-                </a>
-
-                <a
-                    href="mailto:yourmail@gmail.com"
-                    aria-label="Email"
-                >
-                    <i class="bx bx-envelope"></i>
-                </a>
-
-                <a href="#" aria-label="Instagram">
-                    <i class="bx bxl-instagram"></i>
-                </a>
-
-            </div>
-
-
-            <!-- BUTTONS -->
-
-            <div class="hero-buttons">
-
-                <a href="#about" class="btn-box">
-                    More About Me
-                </a>
-
-                <a href="#contact" class="btn-outline">
+                <a href="#contact" class="btn btn-outline">
                     Contact Me
                 </a>
 
             </div>
 
-        </div>
 
+            <!-- Profile Image -->
 
-        <!-- PROFILE IMAGE -->
+            <div class="profile-container">
 
-        <div class="profile-container">
-
-            <div class="profile-glow">
-
-                <img
-                    src="images/profile.jpg"
-                    alt="Midun Shankar K Profile Photo"
-                    class="profile-img"
-                >
+                <img src="images/profile.jpg"
+                     alt="Midun Shankar K Profile Photo"
+                     class="profile-img">
 
             </div>
 
@@ -132,19 +103,20 @@
     </section>
 
 
-    <!-- ================= ABOUT ================= -->
+    <!-- ================= ABOUT SECTION ================= -->
 
-    <section class="section" id="about">
+    <section id="about">
 
         <div class="container">
 
             <div class="section-title">
 
-                <h2>About <span>Me</span></h2>
+                <h2>About Me</h2>
 
                 <p>Get to know me</p>
 
             </div>
+
 
             <div class="about-content">
 
@@ -164,16 +136,6 @@
                         my technical and professional skills.
                     </p>
 
-                    <p>
-                        My goal is to continuously improve my
-                        knowledge and build useful, user-friendly
-                        digital solutions.
-                    </p>
-
-                    <a href="#skills" class="btn-box">
-                        My Skills
-                    </a>
-
                 </div>
 
             </div>
@@ -183,25 +145,24 @@
     </section>
 
 
-    <!-- ================= SKILLS ================= -->
+    <!-- ================= SKILLS SECTION ================= -->
 
-    <section class="section skills-section" id="skills">
+    <section id="skills">
 
         <div class="container">
 
             <div class="section-title">
 
-                <h2>My <span>Skills</span></h2>
+                <h2>My Skills</h2>
 
                 <p>Technologies I am learning</p>
 
             </div>
 
+
             <div class="skills-container">
 
                 <div class="skill-card">
-
-                    <i class="bx bxl-html5"></i>
 
                     <h3>HTML</h3>
 
@@ -215,8 +176,6 @@
 
                 <div class="skill-card">
 
-                    <i class="bx bxl-css3"></i>
-
                     <h3>CSS</h3>
 
                     <p>
@@ -228,8 +187,6 @@
 
 
                 <div class="skill-card">
-
-                    <i class="bx bxl-javascript"></i>
 
                     <h3>JavaScript</h3>
 
@@ -243,8 +200,6 @@
 
                 <div class="skill-card">
 
-                    <i class="bx bxl-python"></i>
-
                     <h3>Python</h3>
 
                     <p>
@@ -257,8 +212,6 @@
 
                 <div class="skill-card">
 
-                    <i class="bx bxl-github"></i>
-
                     <h3>Git & GitHub</h3>
 
                     <p>
@@ -270,8 +223,6 @@
 
 
                 <div class="skill-card">
-
-                    <i class="bx bx-brain"></i>
 
                     <h3>AI Technologies</h3>
 
@@ -289,27 +240,26 @@
     </section>
 
 
-    <!-- ================= PROJECTS ================= -->
+    <!-- ================= PROJECTS SECTION ================= -->
 
-    <section class="section" id="projects">
+    <section id="projects">
 
         <div class="container">
 
             <div class="section-title">
 
-                <h2>My <span>Projects</span></h2>
+                <h2>My Projects</h2>
 
                 <p>Some of my work</p>
 
             </div>
 
+
             <div class="projects-container">
 
-                <div class="project-card">
+                <!-- Project 1 -->
 
-                    <div class="project-icon">
-                        <i class="bx bx-code-alt"></i>
-                    </div>
+                <div class="project-card">
 
                     <h3>Portfolio Website</h3>
 
@@ -319,18 +269,16 @@
                         and JavaScript.
                     </p>
 
-                    <a href="#" class="project-link">
+                    <a href="#">
                         View Project →
                     </a>
 
                 </div>
 
 
-                <div class="project-card">
+                <!-- Project 2 -->
 
-                    <div class="project-icon">
-                        <i class="bx bx-user"></i>
-                    </div>
+                <div class="project-card">
 
                     <h3>Student Management System</h3>
 
@@ -339,18 +287,16 @@
                         to manage student records.
                     </p>
 
-                    <a href="#" class="project-link">
+                    <a href="#">
                         View Project →
                     </a>
 
                 </div>
 
 
-                <div class="project-card">
+                <!-- Project 3 -->
 
-                    <div class="project-icon">
-                        <i class="bx bx-globe"></i>
-                    </div>
+                <div class="project-card">
 
                     <h3>Web Development Project</h3>
 
@@ -359,7 +305,7 @@
                         created using HTML and CSS.
                     </p>
 
-                    <a href="#" class="project-link">
+                    <a href="#">
                         View Project →
                     </a>
 
@@ -372,54 +318,22 @@
     </section>
 
 
-    <!-- ================= CONTACT ================= -->
+    <!-- ================= CONTACT SECTION ================= -->
 
-    <section class="section contact-section" id="contact">
+    <section id="contact">
 
         <div class="container">
 
             <div class="section-title">
 
-                <h2>Contact <span>Me</span></h2>
+                <h2>Contact Me</h2>
 
                 <p>Let's connect</p>
 
             </div>
 
+
             <div class="contact-container">
-
-                <div class="contact-info">
-
-                    <h3>Let's Work Together</h3>
-
-                    <p>
-                        If you would like to connect with me,
-                        feel free to send a message or reach me
-                        through my social profiles.
-                    </p>
-
-                    <div class="contact-item">
-
-                        <i class="bx bx-envelope"></i>
-
-                        <span>
-                            yourmail@gmail.com
-                        </span>
-
-                    </div>
-
-                    <div class="contact-item">
-
-                        <i class="bx bx-map"></i>
-
-                        <span>
-                            Tamil Nadu, India
-                        </span>
-
-                    </div>
-
-                </div>
-
 
                 <form class="contact-form">
 
@@ -443,11 +357,30 @@
                         required
                     ></textarea>
 
-                    <button type="submit" class="btn-box">
+                    <button type="submit" class="btn">
                         Send Message
                     </button>
 
                 </form>
+
+
+                <!-- Social Links -->
+
+                <div class="social-links">
+
+                    <a href="#" target="_blank">
+                        LinkedIn
+                    </a>
+
+                    <a href="#" target="_blank">
+                        GitHub
+                    </a>
+
+                    <a href="mailto:yourmail@gmail.com">
+                        Email
+                    </a>
+
+                </div>
 
             </div>
 
@@ -462,14 +395,15 @@
 
         <p>
             © <span id="current-year"></span>
-            Midun Shankar K. All Rights Reserved.
+            Midun Shankar K.
+            All Rights Reserved.
         </p>
 
     </footer>
 
 
     <!-- JavaScript -->
-    <script src="main.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
