@@ -1,103 +1,158 @@
+document.addEventListener("DOMContentLoaded", () => {
 
-/* =========================================
-   PORTFOLIO JAVASCRIPT
-   Midun Shankar K
-========================================= */
+    /* =========================================
+       MOBILE NAVIGATION
+    ========================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+    const menuBtn = document.querySelector(".menu-btn");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (menuBtn && navLinks) {
+
+        menuBtn.addEventListener("click", () => {
+
+            navLinks.classList.toggle("active");
+            menuBtn.classList.toggle("active");
+
+        });
+
+
+        // Close menu when a navigation link is clicked
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                navLinks.classList.remove("active");
+                menuBtn.classList.remove("active");
+
+            });
+
+        });
+
+    }
+
 
     /* =========================================
        TYPING ANIMATION
     ========================================= */
 
-    const typingElement = document.querySelector(".text");
+    const typingElement = document.querySelector(".typing");
 
-    if (typingElement && typeof Typed !== "undefined") {
+    if (typingElement) {
 
-        new Typed(".text", {
-            strings: [
-                "B.Com IT Student",
-                "Web Developer",
-                "Python Learner",
-                "AI Enthusiast",
-                "Frontend Developer"
-            ],
+        const words = [
+            "B.Com IT Student",
+            "Aspiring IT Professional",
+            "Web Developer",
+            "Creative Learner"
+        ];
 
-            typeSpeed: 70,
-            backSpeed: 50,
-            backDelay: 1000,
-            loop: true
-        });
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+
+        function typeEffect() {
+
+            const currentWord = words[wordIndex];
+
+
+            // Typing
+
+            if (!deleting) {
+
+                typingElement.textContent =
+                    currentWord.substring(0, charIndex + 1);
+
+                charIndex++;
+
+
+                // Word completed
+
+                if (charIndex === currentWord.length) {
+
+                    deleting = true;
+
+                    setTimeout(typeEffect, 1500);
+
+                    return;
+                }
+
+            }
+
+
+            // Deleting
+
+            else {
+
+                typingElement.textContent =
+                    currentWord.substring(0, charIndex - 1);
+
+                charIndex--;
+
+
+                // Move to next word
+
+                if (charIndex === 0) {
+
+                    deleting = false;
+
+                    wordIndex =
+                        (wordIndex + 1) % words.length;
+                }
+
+            }
+
+
+            setTimeout(
+                typeEffect,
+                deleting ? 60 : 100
+            );
+        }
+
+
+        typeEffect();
 
     }
 
 
     /* =========================================
-       MOBILE MENU
+       SCROLL REVEAL ANIMATION
     ========================================= */
 
-    const menuBtn = document.querySelector(".menu-btn");
-    const navbar = document.querySelector(".navbar");
+    const revealElements = document.querySelectorAll(
+        ".section-title, .about-content, .skill-card, .project-card, .contact-container"
+    );
 
-    if (menuBtn && navbar) {
 
-        menuBtn.addEventListener("click", function () {
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
 
-            navbar.classList.toggle("active");
+            entries.forEach(entry => {
 
-            const icon = menuBtn.querySelector("i");
+                if (entry.isIntersecting) {
 
-            if (icon) {
+                    entry.target.classList.add("show");
 
-                if (navbar.classList.contains("active")) {
-
-                    icon.classList.remove("bx-menu");
-                    icon.classList.add("bx-x");
-
-                } else {
-
-                    icon.classList.remove("bx-x");
-                    icon.classList.add("bx-menu");
+                    observer.unobserve(entry.target);
 
                 }
 
-            }
+            });
 
-        });
+        },
+        {
+            threshold: 0.15
+        }
+    );
 
-    }
 
+    revealElements.forEach(element => {
 
-    /* =========================================
-       CLOSE MOBILE MENU
-    ========================================= */
+        element.classList.add("reveal");
 
-    const navLinks =
-        document.querySelectorAll(".navbar a");
-
-    navLinks.forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-            if (navbar) {
-                navbar.classList.remove("active");
-            }
-
-            if (menuBtn) {
-
-                const icon =
-                    menuBtn.querySelector("i");
-
-                if (icon) {
-
-                    icon.classList.remove("bx-x");
-                    icon.classList.add("bx-menu");
-
-                }
-
-            }
-
-        });
+        revealObserver.observe(element);
 
     });
 
@@ -106,21 +161,23 @@ document.addEventListener("DOMContentLoaded", function () {
        ACTIVE NAVIGATION
     ========================================= */
 
-    const sections =
-        document.querySelectorAll("section");
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll(".nav-links a");
 
 
     function updateActiveNavigation() {
 
         let currentSection = "";
 
-        sections.forEach(function (section) {
+
+        sections.forEach(section => {
 
             const sectionTop =
                 section.offsetTop - 150;
 
             const sectionHeight =
                 section.offsetHeight;
+
 
             if (
                 window.scrollY >= sectionTop &&
@@ -136,19 +193,17 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        navLinks.forEach(function (link) {
+        navItems.forEach(item => {
 
-            link.classList.remove("active");
+            item.classList.remove("active");
 
-            const linkTarget =
-                link.getAttribute("href");
 
             if (
-                linkTarget ===
+                item.getAttribute("href") ===
                 "#" + currentSection
             ) {
 
-                link.classList.add("active");
+                item.classList.add("active");
 
             }
 
@@ -162,22 +217,43 @@ document.addEventListener("DOMContentLoaded", function () {
         updateActiveNavigation
     );
 
+
+    // Run once when the page loads
+
     updateActiveNavigation();
 
 
     /* =========================================
-       CURRENT YEAR
+       NAVBAR SHADOW ON SCROLL
     ========================================= */
 
-    const yearElement =
-        document.getElementById("current-year");
+    const header = document.querySelector("header");
 
-    if (yearElement) {
 
-        yearElement.textContent =
-            new Date().getFullYear();
+    function updateNavbar() {
+
+        if (!header) return;
+
+
+        if (window.scrollY > 50) {
+
+            header.classList.add("scrolled");
+
+        }
+
+        else {
+
+            header.classList.remove("scrolled");
+
+        }
 
     }
+
+
+    window.addEventListener(
+        "scroll",
+        updateNavbar
+    );
 
 
     /* =========================================
@@ -187,22 +263,75 @@ document.addEventListener("DOMContentLoaded", function () {
     const contactForm =
         document.querySelector(".contact-form");
 
+
     if (contactForm) {
 
         contactForm.addEventListener(
             "submit",
-            function (event) {
+            event => {
 
                 event.preventDefault();
 
+
+                const name =
+                    contactForm.querySelector(
+                        'input[name="name"]'
+                    )?.value.trim();
+
+
+                const email =
+                    contactForm.querySelector(
+                        'input[name="email"]'
+                    )?.value.trim();
+
+
+                const message =
+                    contactForm.querySelector(
+                        'textarea[name="message"]'
+                    )?.value.trim();
+
+
+                // Check empty fields
+
+                if (!name || !email || !message) {
+
+                    alert(
+                        "Please fill in all the fields."
+                    );
+
+                    return;
+                }
+
+
+                // Success message
+
                 alert(
-                    "Thank you for your message!"
+                    `Thank you, ${name}! Your message has been received.`
                 );
+
+
+                // Clear form
 
                 contactForm.reset();
 
             }
         );
+
+    }
+
+
+    /* =========================================
+       CURRENT YEAR
+    ========================================= */
+
+    const yearElement =
+        document.querySelector("#current-year");
+
+
+    if (yearElement) {
+
+        yearElement.textContent =
+            new Date().getFullYear();
 
     }
 
