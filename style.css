@@ -871,3 +871,215 @@ footer p {
     }
 
 }
+/* =========================================
+   THEME BUTTONS
+========================================= */
+
+.theme-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 20px;
+}
+
+.theme-buttons button {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f1f5f9;
+    color: #2563eb;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.theme-buttons button:hover {
+    transform: scale(1.1);
+    background: #2563eb;
+    color: white;
+}
+
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+body.dark-mode {
+    background: #111827;
+    color: #f9fafb;
+}
+
+body.dark-mode header {
+    background: rgba(17, 24, 39, 0.97);
+}
+
+body.dark-mode .logo {
+    color: #60a5fa;
+}
+
+body.dark-mode .nav-links a {
+    color: #f9fafb;
+}
+
+body.dark-mode .nav-links a:hover,
+body.dark-mode .nav-links a.active {
+    color: #60a5fa;
+}
+
+body.dark-mode .hero {
+    background:
+        linear-gradient(
+            135deg,
+            #111827,
+            #1e293b
+        );
+}
+
+body.dark-mode .hero-content h2 {
+    color: #d1d5db;
+}
+
+body.dark-mode .hero-content p {
+    color: #cbd5e1;
+}
+
+body.dark-mode .section-title h2 {
+    color: #f9fafb;
+}
+
+body.dark-mode .section-title p {
+    color: #cbd5e1;
+}
+
+body.dark-mode #about,
+body.dark-mode #projects {
+    background: #111827;
+}
+
+body.dark-mode #skills,
+body.dark-mode #contact {
+    background: #1e293b;
+}
+
+body.dark-mode .about-text,
+body.dark-mode .skill-card,
+body.dark-mode .project-card,
+body.dark-mode .contact-container {
+    background: #273449;
+    color: #f9fafb;
+}
+
+body.dark-mode .about-text p,
+body.dark-mode .skill-card p,
+body.dark-mode .project-card p {
+    color: #cbd5e1;
+}
+
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea {
+    background: #1e293b;
+    color: white;
+    border-color: #475569;
+}
+
+body.dark-mode .contact-form input::placeholder,
+body.dark-mode .contact-form textarea::placeholder {
+    color: #94a3b8;
+}
+
+body.dark-mode .menu-btn {
+    color: #60a5fa;
+}
+
+
+/* =========================================
+   NIGHT MODE
+========================================= */
+
+body.night-mode {
+    background: #020617;
+    color: #e2e8f0;
+}
+
+body.night-mode header {
+    background: rgba(2, 6, 23, 0.98);
+}
+
+body.night-mode .hero {
+    background:
+        radial-gradient(
+            circle at top right,
+            #172554,
+            #020617 60%
+        );
+}
+
+body.night-mode #about,
+body.night-mode #projects {
+    background: #020617;
+}
+
+body.night-mode #skills,
+body.night-mode #contact {
+    background: #0f172a;
+}
+
+body.night-mode .section-title h2,
+body.night-mode .hero-content h1 {
+    color: #f8fafc;
+}
+
+body.night-mode .hero-content h2,
+body.night-mode .hero-content p,
+body.night-mode .section-title p {
+    color: #cbd5e1;
+}
+
+body.night-mode .about-text,
+body.night-mode .skill-card,
+body.night-mode .project-card,
+body.night-mode .contact-container {
+    background: #111827;
+    color: #e2e8f0;
+}
+
+body.night-mode .about-text p,
+body.night-mode .skill-card p,
+body.night-mode .project-card p {
+    color: #94a3b8;
+}
+
+body.night-mode .nav-links a {
+    color: #e2e8f0;
+}
+
+body.night-mode .nav-links a:hover,
+body.night-mode .nav-links a.active {
+    color: #60a5fa;
+}
+
+
+/* =========================================
+   MOBILE THEME BUTTONS
+========================================= */
+
+@media (max-width: 768px) {
+
+    .theme-buttons {
+        margin-left: auto;
+        margin-right: 10px;
+    }
+
+    .theme-buttons button {
+        width: 35px;
+        height: 35px;
+        font-size: 17px;
+    }
+
+}
