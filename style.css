@@ -710,4 +710,18 @@ footer p {
     transform: translateY(-2px);
     opacity: 0.9;
 }
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    transition: 0.5s;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #333;
+    color: white;
+}
 ```
