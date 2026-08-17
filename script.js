@@ -1,90 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-/* =========================================
-   THEME & BACKGROUND COLOR
-========================================= */
 
-const colorBtn = document.getElementById("colorBtn");
-const darkBtn = document.getElementById("darkBtn");
-const nightBtn = document.getElementById("nightBtn");
-
-const backgrounds = [
-    "#f5f7fa",
-    "#e0f2fe",
-    "#fef3c7",
-    "#fce7f3",
-    "#dcfce7",
-    "#ede9fe"
-];
-
-let colorIndex = 0;
-
-
-/* =========================================
-   CHANGE BACKGROUND COLOR
-========================================= */
-
-if (colorBtn) {
-
-    colorBtn.addEventListener("click", () => {
-
-        colorIndex++;
-
-        if (colorIndex >= backgrounds.length) {
-            colorIndex = 0;
-        }
-
-        document.body.style.background =
-            backgrounds[colorIndex];
-
-    });
-
-}
-
-
-/* =========================================
-   DARK MODE
-========================================= */
-
-if (darkBtn) {
-
-    darkBtn.addEventListener("click", () => {
-
-        document.body.classList.toggle("dark-mode");
-
-        document.body.classList.remove("night-mode");
-
-        if (document.body.classList.contains("dark-mode")) {
-            darkBtn.textContent = "☀️";
-        } else {
-            darkBtn.textContent = "🌙";
-        }
-
-    });
-
-}
-
-
-/* =========================================
-   NIGHT MODE
-========================================= */
-
-if (nightBtn) {
-
-    nightBtn.addEventListener("click", () => {
-
-        document.body.classList.toggle("night-mode");
-
-        document.body.classList.remove("dark-mode");
-
-        if (document.body.classList.contains("night-mode")) {
-            nightBtn.textContent = "☀️";
-        } else {
-            nightBtn.textContent = "🌃";
-        }
-
-    });
-
-}
     /* =========================================
        MOBILE NAVIGATION
     ========================================= */
@@ -95,21 +10,32 @@ if (nightBtn) {
     if (menuBtn && navLinks) {
 
         menuBtn.addEventListener("click", () => {
+
             navLinks.classList.toggle("active");
             menuBtn.classList.toggle("active");
 
-            // Change menu icon
             if (navLinks.classList.contains("active")) {
+
                 menuBtn.textContent = "✕";
-                menuBtn.setAttribute("aria-label", "Close Menu");
+                menuBtn.setAttribute(
+                    "aria-label",
+                    "Close Menu"
+                );
+
             } else {
+
                 menuBtn.textContent = "☰";
-                menuBtn.setAttribute("aria-label", "Open Menu");
+                menuBtn.setAttribute(
+                    "aria-label",
+                    "Open Menu"
+                );
+
             }
+
         });
 
 
-        // Close menu when navigation link is clicked
+        // Close mobile menu after clicking a link
 
         document.querySelectorAll(".nav-links a").forEach(link => {
 
@@ -119,7 +45,11 @@ if (nightBtn) {
                 menuBtn.classList.remove("active");
 
                 menuBtn.textContent = "☰";
-                menuBtn.setAttribute("aria-label", "Open Menu");
+
+                menuBtn.setAttribute(
+                    "aria-label",
+                    "Open Menu"
+                );
 
             });
 
@@ -132,7 +62,8 @@ if (nightBtn) {
        TYPING ANIMATION
     ========================================= */
 
-    const typingElement = document.querySelector(".typing");
+    const typingElement =
+        document.querySelector(".typing");
 
     if (typingElement) {
 
@@ -151,51 +82,66 @@ if (nightBtn) {
 
         function typeEffect() {
 
-            const currentWord = words[wordIndex];
+            const currentWord =
+                words[wordIndex];
 
 
-            // Typing characters
+            // Typing
 
             if (!deleting) {
 
                 typingElement.textContent =
-                    currentWord.substring(0, charIndex + 1);
+                    currentWord.substring(
+                        0,
+                        charIndex + 1
+                    );
 
                 charIndex++;
 
 
                 // Word completed
 
-                if (charIndex === currentWord.length) {
+                if (
+                    charIndex ===
+                    currentWord.length
+                ) {
 
                     deleting = true;
 
-                    setTimeout(typeEffect, 1500);
+                    setTimeout(
+                        typeEffect,
+                        1500
+                    );
 
                     return;
+
                 }
 
             }
 
 
-            // Deleting characters
+            // Deleting
 
             else {
 
                 typingElement.textContent =
-                    currentWord.substring(0, charIndex - 1);
+                    currentWord.substring(
+                        0,
+                        charIndex - 1
+                    );
 
                 charIndex--;
 
 
-                // Move to next word
+                // Next word
 
                 if (charIndex === 0) {
 
                     deleting = false;
 
                     wordIndex =
-                        (wordIndex + 1) % words.length;
+                        (wordIndex + 1) %
+                        words.length;
 
                 }
 
@@ -219,31 +165,41 @@ if (nightBtn) {
        SCROLL REVEAL ANIMATION
     ========================================= */
 
-    const revealElements = document.querySelectorAll(
-        ".section-title, .about-content, .skill-card, .project-card, .contact-container"
-    );
+    const revealElements =
+        document.querySelectorAll(
+            ".section-title, " +
+            ".about-content, " +
+            ".skill-card, " +
+            ".project-card, " +
+            ".contact-container"
+        );
 
 
-    const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
+    const revealObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
 
-            entries.forEach(entry => {
+                entries.forEach(entry => {
 
-                if (entry.isIntersecting) {
+                    if (entry.isIntersecting) {
 
-                    entry.target.classList.add("show");
+                        entry.target.classList.add(
+                            "show"
+                        );
 
-                    observer.unobserve(entry.target);
+                        observer.unobserve(
+                            entry.target
+                        );
 
-                }
+                    }
 
-            });
+                });
 
-        },
-        {
-            threshold: 0.15
-        }
-    );
+            },
+            {
+                threshold: 0.15
+            }
+        );
 
 
     revealElements.forEach(element => {
@@ -259,8 +215,13 @@ if (nightBtn) {
        ACTIVE NAVIGATION
     ========================================= */
 
-    const sections = document.querySelectorAll("section");
-    const navItems = document.querySelectorAll(".nav-links a");
+    const sections =
+        document.querySelectorAll("section");
+
+    const navItems =
+        document.querySelectorAll(
+            ".nav-links a"
+        );
 
 
     function updateActiveNavigation() {
@@ -316,8 +277,6 @@ if (nightBtn) {
     );
 
 
-    // Run when page loads
-
     updateActiveNavigation();
 
 
@@ -325,7 +284,8 @@ if (nightBtn) {
        NAVBAR SHADOW ON SCROLL
     ========================================= */
 
-    const header = document.querySelector("header");
+    const header =
+        document.querySelector("header");
 
 
     function updateNavbar() {
@@ -352,8 +312,6 @@ if (nightBtn) {
     );
 
 
-    // Run when page loads
-
     updateNavbar();
 
 
@@ -362,7 +320,9 @@ if (nightBtn) {
     ========================================= */
 
     const contactForm =
-        document.querySelector(".contact-form");
+        document.querySelector(
+            ".contact-form"
+        );
 
 
     if (contactForm) {
@@ -392,9 +352,13 @@ if (nightBtn) {
                     )?.value.trim();
 
 
-                // Check empty fields
+                // Empty field check
 
-                if (!name || !email || !message) {
+                if (
+                    !name ||
+                    !email ||
+                    !message
+                ) {
 
                     alert(
                         "Please fill in all the fields."
@@ -405,13 +369,15 @@ if (nightBtn) {
                 }
 
 
-                // Check email format
+                // Email validation
 
                 const emailPattern =
                     /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-                if (!emailPattern.test(email)) {
+                if (
+                    !emailPattern.test(email)
+                ) {
 
                     alert(
                         "Please enter a valid email address."
@@ -425,7 +391,8 @@ if (nightBtn) {
                 // Success message
 
                 alert(
-                    `Thank you, ${name}! Your message has been received.`
+                    `Thank you, ${name}! ` +
+                    `Your message has been received.`
                 );
 
 
@@ -444,7 +411,9 @@ if (nightBtn) {
     ========================================= */
 
     const yearElement =
-        document.querySelector("#current-year");
+        document.querySelector(
+            "#current-year"
+        );
 
 
     if (yearElement) {
@@ -460,26 +429,36 @@ if (nightBtn) {
     ========================================= */
 
     const projectLinks =
-        document.querySelectorAll(".project-card a");
+        document.querySelectorAll(
+            ".project-card a"
+        );
 
 
     projectLinks.forEach(link => {
 
-        link.addEventListener("click", event => {
+        link.addEventListener(
+            "click",
+            event => {
 
-            const href = link.getAttribute("href");
+                const href =
+                    link.getAttribute("href");
 
-            if (href === "#" || !href) {
 
-                event.preventDefault();
+                if (
+                    href === "#" ||
+                    !href
+                ) {
 
-                alert(
-                    "Project link will be added soon."
-                );
+                    event.preventDefault();
+
+                    alert(
+                        "Project link will be added soon."
+                    );
+
+                }
 
             }
-
-        });
+        );
 
     });
 
@@ -489,7 +468,9 @@ if (nightBtn) {
     ========================================= */
 
     const profileImage =
-        document.querySelector(".profile-img");
+        document.querySelector(
+            ".profile-img"
+        );
 
 
     if (profileImage) {
@@ -504,6 +485,366 @@ if (nightBtn) {
 
             }
         );
+
+    }
+
+
+    /* =========================================
+       THEME BUTTONS
+    ========================================= */
+
+    const colorBtn =
+        document.getElementById(
+            "colorBtn"
+        );
+
+    const darkBtn =
+        document.getElementById(
+            "darkBtn"
+        );
+
+    const nightBtn =
+        document.getElementById(
+            "nightBtn"
+        );
+
+
+    /* =========================================
+       BACKGROUND COLOR CHANGE
+    ========================================= */
+
+    const backgrounds = [
+        "#f5f7fa",
+        "#e0f2fe",
+        "#fef3c7",
+        "#fce7f3",
+        "#dcfce7",
+        "#ede9fe"
+    ];
+
+    let colorIndex = 0;
+
+
+    if (colorBtn) {
+
+        colorBtn.addEventListener(
+            "click",
+            () => {
+
+                colorIndex++;
+
+                if (
+                    colorIndex >=
+                    backgrounds.length
+                ) {
+
+                    colorIndex = 0;
+
+                }
+
+
+                document.body.style.background =
+                    backgrounds[colorIndex];
+
+
+                // Remove dark/night mode
+
+                document.body.classList.remove(
+                    "dark-mode"
+                );
+
+                document.body.classList.remove(
+                    "night-mode"
+                );
+
+
+                // Reset icons
+
+                if (darkBtn) {
+                    darkBtn.textContent = "🌙";
+                }
+
+                if (nightBtn) {
+                    nightBtn.textContent = "🌃";
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       DARK MODE
+    ========================================= */
+
+    if (darkBtn) {
+
+        darkBtn.addEventListener(
+            "click",
+            () => {
+
+                document.body.classList.toggle(
+                    "dark-mode"
+                );
+
+
+                // Turn off night mode
+
+                document.body.classList.remove(
+                    "night-mode"
+                );
+
+
+                // Remove custom background
+
+                document.body.style.background =
+                    "";
+
+
+                if (
+                    document.body.classList.contains(
+                        "dark-mode"
+                    )
+                ) {
+
+                    darkBtn.textContent = "☀️";
+
+                } else {
+
+                    darkBtn.textContent = "🌙";
+
+                }
+
+
+                if (nightBtn) {
+
+                    nightBtn.textContent = "🌃";
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       NIGHT MODE
+    ========================================= */
+
+    if (nightBtn) {
+
+        nightBtn.addEventListener(
+            "click",
+            () => {
+
+                document.body.classList.toggle(
+                    "night-mode"
+                );
+
+
+                // Turn off dark mode
+
+                document.body.classList.remove(
+                    "dark-mode"
+                );
+
+
+                // Remove custom background
+
+                document.body.style.background =
+                    "";
+
+
+                if (
+                    document.body.classList.contains(
+                        "night-mode"
+                    )
+                ) {
+
+                    nightBtn.textContent = "☀️";
+
+                } else {
+
+                    nightBtn.textContent = "🌃";
+
+                }
+
+
+                if (darkBtn) {
+
+                    darkBtn.textContent = "🌙";
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       SAVE THEME IN BROWSER
+    ========================================= */
+
+    const savedTheme =
+        localStorage.getItem(
+            "portfolioTheme"
+        );
+
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add(
+            "dark-mode"
+        );
+
+        if (darkBtn) {
+            darkBtn.textContent = "☀️";
+        }
+
+    }
+
+
+    if (savedTheme === "night") {
+
+        document.body.classList.add(
+            "night-mode"
+        );
+
+        if (nightBtn) {
+            nightBtn.textContent = "☀️";
+        }
+
+    }
+
+
+    /* =========================================
+       SAVE DARK MODE
+    ========================================= */
+
+    if (darkBtn) {
+
+        darkBtn.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    document.body.classList.contains(
+                        "dark-mode"
+                    )
+                ) {
+
+                    localStorage.setItem(
+                        "portfolioTheme",
+                        "dark"
+                    );
+
+                } else {
+
+                    localStorage.removeItem(
+                        "portfolioTheme"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       SAVE NIGHT MODE
+    ========================================= */
+
+    if (nightBtn) {
+
+        nightBtn.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    document.body.classList.contains(
+                        "night-mode"
+                    )
+                ) {
+
+                    localStorage.setItem(
+                        "portfolioTheme",
+                        "night"
+                    );
+
+                } else {
+
+                    localStorage.removeItem(
+                        "portfolioTheme"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       COLOR CHANGE STORAGE
+    ========================================= */
+
+    if (colorBtn) {
+
+        colorBtn.addEventListener(
+            "click",
+            () => {
+
+                localStorage.removeItem(
+                    "portfolioTheme"
+                );
+
+                localStorage.setItem(
+                    "portfolioBackground",
+                    backgrounds[colorIndex]
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       LOAD SAVED BACKGROUND
+    ========================================= */
+
+    const savedBackground =
+        localStorage.getItem(
+            "portfolioBackground"
+        );
+
+
+    if (
+        savedBackground &&
+        !savedTheme
+    ) {
+
+        document.body.style.background =
+            savedBackground;
+
+
+        const savedIndex =
+            backgrounds.indexOf(
+                savedBackground
+            );
+
+
+        if (savedIndex !== -1) {
+
+            colorIndex = savedIndex;
+
+        }
 
     }
 
