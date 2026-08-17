@@ -336,4 +336,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+function changeColor() {
+    const colors = [
+        "#f4f4f4",
+        "#e3f2fd",
+        "#e8f5e9",
+        "#fff3e0",
+        "#fce4ec",
+        "#ede7f6"
+    ];
+
+    const randomColor =
+        colors[Math.floor(Math.random() * colors.length)];
+
+    document.body.style.backgroundColor = randomColor;
+}
 ```
