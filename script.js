@@ -1,5 +1,90 @@
 document.addEventListener("DOMContentLoaded", () => {
+/* =========================================
+   THEME & BACKGROUND COLOR
+========================================= */
 
+const colorBtn = document.getElementById("colorBtn");
+const darkBtn = document.getElementById("darkBtn");
+const nightBtn = document.getElementById("nightBtn");
+
+const backgrounds = [
+    "#f5f7fa",
+    "#e0f2fe",
+    "#fef3c7",
+    "#fce7f3",
+    "#dcfce7",
+    "#ede9fe"
+];
+
+let colorIndex = 0;
+
+
+/* =========================================
+   CHANGE BACKGROUND COLOR
+========================================= */
+
+if (colorBtn) {
+
+    colorBtn.addEventListener("click", () => {
+
+        colorIndex++;
+
+        if (colorIndex >= backgrounds.length) {
+            colorIndex = 0;
+        }
+
+        document.body.style.background =
+            backgrounds[colorIndex];
+
+    });
+
+}
+
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+if (darkBtn) {
+
+    darkBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark-mode");
+
+        document.body.classList.remove("night-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+            darkBtn.textContent = "☀️";
+        } else {
+            darkBtn.textContent = "🌙";
+        }
+
+    });
+
+}
+
+
+/* =========================================
+   NIGHT MODE
+========================================= */
+
+if (nightBtn) {
+
+    nightBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("night-mode");
+
+        document.body.classList.remove("dark-mode");
+
+        if (document.body.classList.contains("night-mode")) {
+            nightBtn.textContent = "☀️";
+        } else {
+            nightBtn.textContent = "🌃";
+        }
+
+    });
+
+}
     /* =========================================
        MOBILE NAVIGATION
     ========================================= */
