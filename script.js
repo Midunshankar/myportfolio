@@ -10,14 +10,21 @@ document.addEventListener("DOMContentLoaded", () => {
     if (menuBtn && navLinks) {
 
         menuBtn.addEventListener("click", () => {
-
             navLinks.classList.toggle("active");
             menuBtn.classList.toggle("active");
 
+            // Change menu icon
+            if (navLinks.classList.contains("active")) {
+                menuBtn.textContent = "✕";
+                menuBtn.setAttribute("aria-label", "Close Menu");
+            } else {
+                menuBtn.textContent = "☰";
+                menuBtn.setAttribute("aria-label", "Open Menu");
+            }
         });
 
 
-        // Close menu when a navigation link is clicked
+        // Close menu when navigation link is clicked
 
         document.querySelectorAll(".nav-links a").forEach(link => {
 
@@ -25,6 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 navLinks.classList.remove("active");
                 menuBtn.classList.remove("active");
+
+                menuBtn.textContent = "☰";
+                menuBtn.setAttribute("aria-label", "Open Menu");
 
             });
 
@@ -45,7 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "B.Com IT Student",
             "Aspiring IT Professional",
             "Web Developer",
-            "Creative Learner"
+            "Creative Learner",
+            "AI Enthusiast"
         ];
 
         let wordIndex = 0;
@@ -58,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const currentWord = words[wordIndex];
 
 
-            // Typing
+            // Typing characters
 
             if (!deleting) {
 
@@ -82,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            // Deleting
+            // Deleting characters
 
             else {
 
@@ -100,6 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     wordIndex =
                         (wordIndex + 1) % words.length;
+
                 }
 
             }
@@ -109,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 typeEffect,
                 deleting ? 60 : 100
             );
+
         }
 
 
@@ -218,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    // Run once when the page loads
+    // Run when page loads
 
     updateActiveNavigation();
 
@@ -239,9 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             header.classList.add("scrolled");
 
-        }
-
-        else {
+        } else {
 
             header.classList.remove("scrolled");
 
@@ -254,6 +265,11 @@ document.addEventListener("DOMContentLoaded", () => {
         "scroll",
         updateNavbar
     );
+
+
+    // Run when page loads
+
+    updateNavbar();
 
 
     /* =========================================
@@ -300,6 +316,24 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
 
                     return;
+
+                }
+
+
+                // Check email format
+
+                const emailPattern =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                if (!emailPattern.test(email)) {
+
+                    alert(
+                        "Please enter a valid email address."
+                    );
+
+                    return;
+
                 }
 
 
@@ -332,6 +366,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
         yearElement.textContent =
             new Date().getFullYear();
+
+    }
+
+
+    /* =========================================
+       PROJECT LINKS
+    ========================================= */
+
+    const projectLinks =
+        document.querySelectorAll(".project-card a");
+
+
+    projectLinks.forEach(link => {
+
+        link.addEventListener("click", event => {
+
+            const href = link.getAttribute("href");
+
+            if (href === "#" || !href) {
+
+                event.preventDefault();
+
+                alert(
+                    "Project link will be added soon."
+                );
+
+            }
+
+        });
+
+    });
+
+
+    /* =========================================
+       PROFILE IMAGE ERROR HANDLING
+    ========================================= */
+
+    const profileImage =
+        document.querySelector(".profile-img");
+
+
+    if (profileImage) {
+
+        profileImage.addEventListener(
+            "error",
+            () => {
+
+                console.log(
+                    "Profile image could not be loaded."
+                );
+
+            }
+        );
 
     }
 
