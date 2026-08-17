@@ -617,11 +617,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                if (nightBtn) {
-
-                    nightBtn.textContent = "🌃";
-
-                }
+                
 
             }
         );
