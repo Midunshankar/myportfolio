@@ -905,4 +905,42 @@ footer p {
     color: white;
 }
 
+/* Dark / Light Mode Toggle */
 
+.theme-toggle {
+    width: 55px;
+    height: 28px;
+    background: #222;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.theme-toggle::before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: 0.3s ease;
+}
+
+/* Dark mode */
+body.dark-mode {
+    background: #121212;
+    color: #fff;
+}
+
+body.dark-mode .theme-toggle {
+    background: #fff;
+}
+
+body.dark-mode .theme-toggle::before {
+    background: #222;
+    transform: translateX(27px);
+}
