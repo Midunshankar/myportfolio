@@ -18,6 +18,7 @@ body {
     background: #f5f7fa;
     color: #222;
     line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -94,7 +95,6 @@ header.scrolled {
     content: "";
 
     position: absolute;
-
     left: 0;
     bottom: -6px;
 
@@ -148,12 +148,13 @@ header.scrolled {
     align-items: center;
     justify-content: center;
 
-    background:
-        linear-gradient(
-            135deg,
-            #f5f7fa 0%,
-            #eaf1ff 100%
-        );
+    background: linear-gradient(
+        135deg,
+        #f5f7fa 0%,
+        #eaf1ff 100%
+    );
+
+    transition: 0.3s ease;
 }
 
 .hero-container {
@@ -212,7 +213,9 @@ header.scrolled {
    PROFILE IMAGE
 ========================================= */
 
-.profile-container {
+/* Matches your HTML: <div class="profile"> */
+
+.profile {
     flex: 1;
 
     display: flex;
@@ -220,7 +223,8 @@ header.scrolled {
     align-items: center;
 }
 
-.profile-img {
+.profile-img,
+.profile img {
     width: 280px;
     height: 280px;
 
@@ -236,7 +240,8 @@ header.scrolled {
     transition: 0.3s ease;
 }
 
-.profile-img:hover {
+.profile-img:hover,
+.profile img:hover {
     transform: scale(1.05);
 
     box-shadow:
@@ -256,6 +261,7 @@ header.scrolled {
     margin-right: 10px;
 
     background: #2563eb;
+
     color: white;
 
     border-radius: 8px;
@@ -392,8 +398,7 @@ section {
 .skills-container {
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 25px;
 }
@@ -448,8 +453,7 @@ section {
 .projects-container {
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 25px;
 }
@@ -669,17 +673,16 @@ footer p {
         font-size: 42px;
     }
 
-    .profile-img {
+    .profile-img,
+    .profile img {
         width: 240px;
         height: 240px;
     }
 
     .skills-container,
     .projects-container {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
-
 }
 
 
@@ -731,8 +734,7 @@ footer p {
     /* Hero */
 
     .hero {
-        padding:
-            120px 20px 60px;
+        padding: 120px 20px 60px;
     }
 
     .hero-container {
@@ -751,13 +753,12 @@ footer p {
 
     .hero-content p {
         margin-left: auto;
-
         margin-right: auto;
     }
 
-    .profile-img {
+    .profile-img,
+    .profile img {
         width: 220px;
-
         height: 220px;
     }
 
@@ -838,9 +839,9 @@ footer p {
         font-size: 15px;
     }
 
-    .profile-img {
+    .profile-img,
+    .profile img {
         width: 190px;
-
         height: 190px;
     }
 
@@ -849,8 +850,7 @@ footer p {
 
         width: fit-content;
 
-        margin:
-            10px auto;
+        margin: 10px auto;
     }
 
     .social-links {
@@ -869,78 +869,4 @@ footer p {
     .project-card {
         padding: 25px 20px;
     }
-
-}
-/* =========================================
-   THEME BUTTONS
-========================================= */
-
-.theme-buttons {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-left: 20px;
-}
-
-.theme-buttons button {
-    width: 40px;
-    height: 40px;
-
-    border: none;
-    border-radius: 50%;
-
-    background: #f1f5f9;
-    color: #2563eb;
-
-    font-size: 20px;
-
-    cursor: pointer;
-
-    transition: 0.3s ease;
-}
-
-.theme-buttons button:hover {
-    transform: scale(1.1);
-    background: #2563eb;
-    color: white;
-}
-
-/* Dark / Light Mode Toggle */
-
-.theme-toggle {
-    width: 55px;
-    height: 28px;
-    background: #222;
-    border-radius: 30px;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    transition: 0.3s ease;
-}
-
-.theme-toggle::before {
-    content: "";
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    background: #fff;
-    border-radius: 50%;
-    top: 3px;
-    left: 3px;
-    transition: 0.3s ease;
-}
-
-/* Dark mode */
-body.dark-mode {
-    background: #121212;
-    color: #fff;
-}
-
-body.dark-mode .theme-toggle {
-    background: #fff;
-}
-
-body.dark-mode .theme-toggle::before {
-    background: #222;
-    transform: translateX(27px);
 }
