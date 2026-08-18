@@ -11,8 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         menuBtn.addEventListener("click", () => {
 
-            const isOpen =
-                navLinks.classList.toggle("active");
+            const isOpen = navLinks.classList.toggle("active");
 
             menuBtn.classList.toggle("active");
 
@@ -20,29 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 menuBtn.textContent = "✕";
 
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Close Menu"
-                );
-
-                menuBtn.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
+                menuBtn.setAttribute("aria-label", "Close Menu");
+                menuBtn.setAttribute("aria-expanded", "true");
 
             } else {
 
                 menuBtn.textContent = "☰";
 
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open Menu"
-                );
-
-                menuBtn.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+                menuBtn.setAttribute("aria-label", "Open Menu");
+                menuBtn.setAttribute("aria-expanded", "false");
 
             }
 
@@ -51,31 +36,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /* Close menu after clicking a link */
 
-        document
-            .querySelectorAll(".nav-links a")
-            .forEach(link => {
+        document.querySelectorAll(".nav-links a").forEach(link => {
 
-                link.addEventListener("click", () => {
+            link.addEventListener("click", () => {
 
-                    navLinks.classList.remove("active");
+                navLinks.classList.remove("active");
+                menuBtn.classList.remove("active");
 
-                    menuBtn.classList.remove("active");
+                menuBtn.textContent = "☰";
 
-                    menuBtn.textContent = "☰";
-
-                    menuBtn.setAttribute(
-                        "aria-label",
-                        "Open Menu"
-                    );
-
-                    menuBtn.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                });
+                menuBtn.setAttribute("aria-label", "Open Menu");
+                menuBtn.setAttribute("aria-expanded", "false");
 
             });
+
+        });
 
     }
 
@@ -85,8 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
        TYPING ANIMATION
     ========================================= */
 
-    const typingElement =
-        document.querySelector(".typing");
+    const typingElement = document.querySelector(".typing");
 
     if (typingElement) {
 
@@ -102,73 +76,43 @@ document.addEventListener("DOMContentLoaded", () => {
         let charIndex = 0;
         let deleting = false;
 
-
         function typeEffect() {
 
-            const currentWord =
-                words[wordIndex];
-
-
-            /* Typing */
+            const currentWord = words[wordIndex];
 
             if (!deleting) {
 
                 typingElement.textContent =
-                    currentWord.substring(
-                        0,
-                        charIndex + 1
-                    );
+                    currentWord.substring(0, charIndex + 1);
 
                 charIndex++;
 
-
-                /* Word completed */
-
-                if (
-                    charIndex ===
-                    currentWord.length
-                ) {
+                if (charIndex === currentWord.length) {
 
                     deleting = true;
 
-                    setTimeout(
-                        typeEffect,
-                        1500
-                    );
+                    setTimeout(typeEffect, 1500);
 
                     return;
                 }
 
-            }
-
-
-            /* Deleting */
-
-            else {
+            } else {
 
                 typingElement.textContent =
-                    currentWord.substring(
-                        0,
-                        charIndex - 1
-                    );
+                    currentWord.substring(0, charIndex - 1);
 
                 charIndex--;
-
-
-                /* Move to next word */
 
                 if (charIndex === 0) {
 
                     deleting = false;
 
                     wordIndex =
-                        (wordIndex + 1) %
-                        words.length;
+                        (wordIndex + 1) % words.length;
 
                 }
 
             }
-
 
             setTimeout(
                 typeEffect,
@@ -176,7 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
         }
-
 
         typeEffect();
 
@@ -188,18 +131,14 @@ document.addEventListener("DOMContentLoaded", () => {
        SCROLL REVEAL ANIMATION
     ========================================= */
 
-    const revealElements =
-        document.querySelectorAll(
-            ".section-title, " +
-            ".about-content, " +
-            ".skill-card, " +
-            ".project-card"
-        );
+    const revealElements = document.querySelectorAll(
+        ".section-title, " +
+        ".about-content, " +
+        ".skill-card, " +
+        ".project-card"
+    );
 
-
-    if (
-        "IntersectionObserver" in window
-    ) {
+    if ("IntersectionObserver" in window) {
 
         const revealObserver =
             new IntersectionObserver(
@@ -207,17 +146,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     entries.forEach(entry => {
 
-                        if (
-                            entry.isIntersecting
-                        ) {
+                        if (entry.isIntersecting) {
 
-                            entry.target.classList.add(
-                                "show"
-                            );
+                            entry.target.classList.add("show");
 
-                            observer.unobserve(
-                                entry.target
-                            );
+                            observer.unobserve(entry.target);
 
                         }
 
@@ -229,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             );
 
-
         revealElements.forEach(element => {
 
             element.classList.add("reveal");
@@ -239,8 +171,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     } else {
-
-        /* Fallback */
 
         revealElements.forEach(element => {
 
@@ -256,47 +186,32 @@ document.addEventListener("DOMContentLoaded", () => {
        ACTIVE NAVIGATION
     ========================================= */
 
-    const sections =
-        document.querySelectorAll("section");
-
-    const navItems =
-        document.querySelectorAll(
-            ".nav-links a"
-        );
-
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll(".nav-links a");
 
     function updateActiveNavigation() {
 
         let currentSection = "";
 
-
         sections.forEach(section => {
 
-            const sectionTop =
-                section.offsetTop - 150;
-
-            const sectionHeight =
-                section.offsetHeight;
-
+            const sectionTop = section.offsetTop - 150;
+            const sectionHeight = section.offsetHeight;
 
             if (
                 window.scrollY >= sectionTop &&
-                window.scrollY <
-                sectionTop + sectionHeight
+                window.scrollY < sectionTop + sectionHeight
             ) {
 
-                currentSection =
-                    section.getAttribute("id");
+                currentSection = section.getAttribute("id");
 
             }
 
         });
 
-
         navItems.forEach(item => {
 
             item.classList.remove("active");
-
 
             if (
                 item.getAttribute("href") ===
@@ -311,7 +226,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
     window.addEventListener(
         "scroll",
         updateActiveNavigation
@@ -325,16 +239,13 @@ document.addEventListener("DOMContentLoaded", () => {
        NAVBAR SHADOW ON SCROLL
     ========================================= */
 
-    const header =
-        document.querySelector("header");
-
+    const header = document.querySelector("header");
 
     function updateNavbar() {
 
         if (!header) {
             return;
         }
-
 
         if (window.scrollY > 50) {
 
@@ -347,7 +258,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     }
-
 
     window.addEventListener(
         "scroll",
@@ -363,10 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     const yearElement =
-        document.querySelector(
-            "#current-year"
-        );
-
+        document.querySelector("#current-year");
 
     if (yearElement) {
 
@@ -382,36 +289,25 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     const projectLinks =
-        document.querySelectorAll(
-            ".project-card a"
-        );
-
+        document.querySelectorAll(".project-card a");
 
     projectLinks.forEach(link => {
 
-        link.addEventListener(
-            "click",
-            event => {
+        link.addEventListener("click", event => {
 
-                const href =
-                    link.getAttribute("href");
+            const href = link.getAttribute("href");
 
+            if (href === "#" || !href) {
 
-                if (
-                    href === "#" ||
-                    !href
-                ) {
+                event.preventDefault();
 
-                    event.preventDefault();
-
-                    alert(
-                        "Project link will be added soon."
-                    );
-
-                }
+                alert(
+                    "Project link will be added soon."
+                );
 
             }
-        );
+
+        });
 
     });
 
@@ -422,38 +318,28 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     const profileImage =
-        document.querySelector(
-            ".profile-img"
-        );
-
+        document.querySelector(".profile img");
 
     if (profileImage) {
 
-        profileImage.addEventListener(
-            "load",
-            () => {
+        profileImage.addEventListener("load", () => {
 
-                console.log(
-                    "Profile image loaded successfully."
-                );
+            console.log(
+                "Profile image loaded successfully."
+            );
 
-            }
-        );
+        });
 
+        profileImage.addEventListener("error", () => {
 
-        profileImage.addEventListener(
-            "error",
-            () => {
+            console.error(
+                "Profile image could not be loaded."
+            );
 
-                console.error(
-                    "Profile image could not be loaded."
-                );
+            profileImage.alt =
+                "Profile image unavailable";
 
-                profileImage.alt =
-                    "Profile image unavailable";
-
-            }
-        );
+        });
 
     }
 
@@ -464,41 +350,26 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     const colorBtn =
-        document.querySelector(
-            "#colorBtn"
-        );
-
+        document.querySelector("#colorBtn");
 
     const backgroundColors = [
 
         "#f5f7fa",
-
         "#eef6ff",
-
         "#f0fdf4",
-
         "#fff7ed",
-
         "#fdf4ff",
-
         "#fefce8"
 
     ];
 
-
     let savedColorIndex =
-        localStorage.getItem(
-            "colorIndex"
-        );
-
+        localStorage.getItem("colorIndex");
 
     let colorIndex =
         savedColorIndex !== null
             ? Number(savedColorIndex)
             : 0;
-
-
-    /* Make sure the saved value is valid */
 
     if (
         Number.isNaN(colorIndex) ||
@@ -510,7 +381,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
     function applyBackgroundColor() {
 
         document.body.style.backgroundColor =
@@ -518,33 +388,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
     if (colorBtn) {
 
-        colorBtn.addEventListener(
-            "click",
-            () => {
+        colorBtn.addEventListener("click", () => {
 
-                colorIndex =
-                    (colorIndex + 1) %
-                    backgroundColors.length;
+            colorIndex =
+                (colorIndex + 1) %
+                backgroundColors.length;
 
+            localStorage.setItem(
+                "colorIndex",
+                colorIndex
+            );
 
-                localStorage.setItem(
-                    "colorIndex",
-                    colorIndex
-                );
+            applyBackgroundColor();
 
-
-                applyBackgroundColor();
-
-            }
-        );
+        });
 
     }
-
-
-    /* Load saved background colour */
 
     applyBackgroundColor();
 
