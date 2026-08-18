@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-        // Close mobile menu after clicking a link
+        /* Close menu after clicking a link */
 
         document.querySelectorAll(".nav-links a").forEach(link => {
 
@@ -86,8 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 words[wordIndex];
 
 
-            // Typing
-
             if (!deleting) {
 
                 typingElement.textContent =
@@ -98,8 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 charIndex++;
 
-
-                // Word completed
 
                 if (
                     charIndex ===
@@ -117,12 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 }
 
-            }
-
-
-            // Deleting
-
-            else {
+            } else {
 
                 typingElement.textContent =
                     currentWord.substring(
@@ -132,8 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 charIndex--;
 
-
-                // Next word
 
                 if (charIndex === 0) {
 
@@ -175,40 +164,54 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    const revealObserver =
-        new IntersectionObserver(
-            (entries, observer) => {
+    if ("IntersectionObserver" in window) {
 
-                entries.forEach(entry => {
+        const revealObserver =
+            new IntersectionObserver(
+                (entries, observer) => {
 
-                    if (entry.isIntersecting) {
+                    entries.forEach(entry => {
 
-                        entry.target.classList.add(
-                            "show"
-                        );
+                        if (entry.isIntersecting) {
 
-                        observer.unobserve(
-                            entry.target
-                        );
+                            entry.target.classList.add(
+                                "show"
+                            );
 
-                    }
+                            observer.unobserve(
+                                entry.target
+                            );
 
-                });
+                        }
 
-            },
-            {
-                threshold: 0.15
-            }
-        );
+                    });
+
+                },
+                {
+                    threshold: 0.15
+                }
+            );
 
 
-    revealElements.forEach(element => {
+        revealElements.forEach(element => {
 
-        element.classList.add("reveal");
+            element.classList.add("reveal");
 
-        revealObserver.observe(element);
+            revealObserver.observe(element);
 
-    });
+        });
+
+    } else {
+
+        /* Fallback for older browsers */
+
+        revealElements.forEach(element => {
+
+            element.classList.add("show");
+
+        });
+
+    }
 
 
     /* =========================================
@@ -276,7 +279,6 @@ document.addEventListener("DOMContentLoaded", () => {
         updateActiveNavigation
     );
 
-
     updateActiveNavigation();
 
 
@@ -310,7 +312,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "scroll",
         updateNavbar
     );
-
 
     updateNavbar();
 
@@ -352,7 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     )?.value.trim();
 
 
-                // Empty field check
+                /* Empty field check */
 
                 if (
                     !name ||
@@ -369,7 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                // Email validation
+                /* Email validation */
 
                 const emailPattern =
                     /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -388,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                // Success message
+                /* Success message */
 
                 alert(
                     `Thank you, ${name}! ` +
@@ -396,7 +397,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
 
-                // Clear form
+                /* Clear form */
 
                 contactForm.reset();
 
@@ -487,3 +488,67 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     }
+
+
+    /* =========================================
+       BACKGROUND COLOUR CHANGE
+    ========================================= */
+
+    const colorBtn =
+        document.querySelector("#colorBtn");
+
+
+    const backgroundColors = [
+        "#f5f7fa",
+        "#eef6ff",
+        "#f0fdf4",
+        "#fff7ed",
+        "#fdf4ff",
+        "#fefce8"
+    ];
+
+
+    let colorIndex =
+        Number(
+            localStorage.getItem("colorIndex")
+        ) || 0;
+
+
+    function applyBackgroundColor() {
+
+        document.body.style.backgroundColor =
+            backgroundColors[colorIndex];
+
+    }
+
+
+    if (colorBtn) {
+
+        colorBtn.addEventListener(
+            "click",
+            () => {
+
+                colorIndex =
+                    (colorIndex + 1) %
+                    backgroundColors.length;
+
+
+                localStorage.setItem(
+                    "colorIndex",
+                    colorIndex
+                );
+
+
+                applyBackgroundColor();
+
+            }
+        );
+
+    }
+
+
+    /* Load saved background colour */
+
+    applyBackgroundColor();
+
+});
