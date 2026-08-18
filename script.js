@@ -11,82 +11,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
         menuBtn.addEventListener("click", () => {
 
-            const isOpen =
-                navLinks.classList.toggle("active");
-
+            navLinks.classList.toggle("active");
             menuBtn.classList.toggle("active");
-
-            if (isOpen) {
-
-                menuBtn.textContent = "✕";
-
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Close Menu"
-                );
-
-                menuBtn.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
-
-            } else {
-
-                menuBtn.textContent = "☰";
-
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open Menu"
-                );
-
-                menuBtn.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            }
 
         });
 
 
-        /* Close mobile menu after clicking a link */
+        // Close menu when a navigation link is clicked
 
-        document
-            .querySelectorAll(".nav-links a")
-            .forEach(link => {
+        document.querySelectorAll(".nav-links a").forEach(link => {
 
-                link.addEventListener("click", () => {
+            link.addEventListener("click", () => {
 
-                    navLinks.classList.remove("active");
-
-                    menuBtn.classList.remove("active");
-
-                    menuBtn.textContent = "☰";
-
-                    menuBtn.setAttribute(
-                        "aria-label",
-                        "Open Menu"
-                    );
-
-                    menuBtn.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                });
+                navLinks.classList.remove("active");
+                menuBtn.classList.remove("active");
 
             });
 
-    }
+        });
 
+    }
 
 
     /* =========================================
        TYPING ANIMATION
     ========================================= */
 
-    const typingElement =
-        document.querySelector(".typing");
+    const typingElement = document.querySelector(".typing");
 
     if (typingElement) {
 
@@ -94,8 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "B.Com IT Student",
             "Aspiring IT Professional",
             "Web Developer",
-            "Creative Learner",
-            "AI Enthusiast"
+            "Creative Learner"
         ];
 
         let wordIndex = 0;
@@ -105,36 +55,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function typeEffect() {
 
-            const currentWord =
-                words[wordIndex];
+            const currentWord = words[wordIndex];
 
 
-            /* Typing */
+            // Typing
 
             if (!deleting) {
 
                 typingElement.textContent =
-                    currentWord.substring(
-                        0,
-                        charIndex + 1
-                    );
+                    currentWord.substring(0, charIndex + 1);
 
                 charIndex++;
 
 
-                /* Word completed */
+                // Word completed
 
-                if (
-                    charIndex ===
-                    currentWord.length
-                ) {
+                if (charIndex === currentWord.length) {
 
                     deleting = true;
 
-                    setTimeout(
-                        typeEffect,
-                        1500
-                    );
+                    setTimeout(typeEffect, 1500);
 
                     return;
                 }
@@ -142,29 +82,24 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* Deleting */
+            // Deleting
 
             else {
 
                 typingElement.textContent =
-                    currentWord.substring(
-                        0,
-                        charIndex - 1
-                    );
+                    currentWord.substring(0, charIndex - 1);
 
                 charIndex--;
 
 
-                /* Move to next word */
+                // Move to next word
 
                 if (charIndex === 0) {
 
                     deleting = false;
 
                     wordIndex =
-                        (wordIndex + 1) %
-                        words.length;
-
+                        (wordIndex + 1) % words.length;
                 }
 
             }
@@ -174,7 +109,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 typeEffect,
                 deleting ? 60 : 100
             );
-
         }
 
 
@@ -183,83 +117,52 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-
     /* =========================================
        SCROLL REVEAL ANIMATION
     ========================================= */
 
-    const revealElements =
-        document.querySelectorAll(
-            ".section-title, " +
-            ".about-content, " +
-            ".skill-card, " +
-            ".project-card, " +
-            ".contact-container"
-        );
+    const revealElements = document.querySelectorAll(
+        ".section-title, .about-content, .skill-card, .project-card, .contact-container"
+    );
 
 
-    if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
 
-        const revealObserver =
-            new IntersectionObserver(
-                (entries, observer) => {
+            entries.forEach(entry => {
 
-                    entries.forEach(entry => {
+                if (entry.isIntersecting) {
 
-                        if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
 
-                            entry.target.classList.add(
-                                "show"
-                            );
+                    observer.unobserve(entry.target);
 
-                            observer.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.15
                 }
-            );
+
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
 
 
-        revealElements.forEach(element => {
+    revealElements.forEach(element => {
 
-            element.classList.add("reveal");
+        element.classList.add("reveal");
 
-            revealObserver.observe(element);
+        revealObserver.observe(element);
 
-        });
-
-    } else {
-
-        /* Browser fallback */
-
-        revealElements.forEach(element => {
-
-            element.classList.add("show");
-
-        });
-
-    }
-
+    });
 
 
     /* =========================================
        ACTIVE NAVIGATION
     ========================================= */
 
-    const sections =
-        document.querySelectorAll("section");
-
-    const navItems =
-        document.querySelectorAll(
-            ".nav-links a"
-        );
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll(".nav-links a");
 
 
     function updateActiveNavigation() {
@@ -314,30 +217,31 @@ document.addEventListener("DOMContentLoaded", () => {
         updateActiveNavigation
     );
 
-    updateActiveNavigation();
 
+    // Run once when the page loads
+
+    updateActiveNavigation();
 
 
     /* =========================================
        NAVBAR SHADOW ON SCROLL
     ========================================= */
 
-    const header =
-        document.querySelector("header");
+    const header = document.querySelector("header");
 
 
     function updateNavbar() {
 
-        if (!header) {
-            return;
-        }
+        if (!header) return;
 
 
         if (window.scrollY > 50) {
 
             header.classList.add("scrolled");
 
-        } else {
+        }
+
+        else {
 
             header.classList.remove("scrolled");
 
@@ -351,18 +255,13 @@ document.addEventListener("DOMContentLoaded", () => {
         updateNavbar
     );
 
-    updateNavbar();
-
-
 
     /* =========================================
        CONTACT FORM
     ========================================= */
 
     const contactForm =
-        document.querySelector(
-            ".contact-form"
-        );
+        document.querySelector(".contact-form");
 
 
     if (contactForm) {
@@ -374,45 +273,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 event.preventDefault();
 
 
-                const nameInput =
+                const name =
                     contactForm.querySelector(
                         'input[name="name"]'
-                    );
+                    )?.value.trim();
 
-                const emailInput =
-                    contactForm.querySelector(
-                        'input[name="email"]'
-                    );
-
-                const messageInput =
-                    contactForm.querySelector(
-                        'textarea[name="message"]'
-                    );
-
-
-                const name =
-                    nameInput
-                        ? nameInput.value.trim()
-                        : "";
 
                 const email =
-                    emailInput
-                        ? emailInput.value.trim()
-                        : "";
+                    contactForm.querySelector(
+                        'input[name="email"]'
+                    )?.value.trim();
+
 
                 const message =
-                    messageInput
-                        ? messageInput.value.trim()
-                        : "";
+                    contactForm.querySelector(
+                        'textarea[name="message"]'
+                    )?.value.trim();
 
 
-                /* Check empty fields */
+                // Check empty fields
 
-                if (
-                    !name ||
-                    !email ||
-                    !message
-                ) {
+                if (!name || !email || !message) {
 
                     alert(
                         "Please fill in all the fields."
@@ -422,32 +303,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                /* Email validation */
-
-                const emailPattern =
-                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-                if (
-                    !emailPattern.test(email)
-                ) {
-
-                    alert(
-                        "Please enter a valid email address."
-                    );
-
-                    return;
-                }
-
-
-                /* Success message */
+                // Success message
 
                 alert(
                     `Thank you, ${name}! Your message has been received.`
                 );
 
 
-                /* Clear form */
+                // Clear form
 
                 contactForm.reset();
 
@@ -457,110 +320,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-
     /* =========================================
        CURRENT YEAR
     ========================================= */
 
     const yearElement =
-        document.querySelector(
-            "#current-year"
-        );
+        document.querySelector("#current-year");
 
 
     if (yearElement) {
 
         yearElement.textContent =
             new Date().getFullYear();
-
-    }
-
-
-
-    /* =========================================
-       PROJECT LINKS
-    ========================================= */
-
-    const projectLinks =
-        document.querySelectorAll(
-            ".project-card a"
-        );
-
-
-    projectLinks.forEach(link => {
-
-        link.addEventListener(
-            "click",
-            event => {
-
-                const href =
-                    link.getAttribute("href");
-
-
-                if (
-                    href === "#" ||
-                    !href
-                ) {
-
-                    event.preventDefault();
-
-                    alert(
-                        "Project link will be added soon."
-                    );
-
-                }
-
-            }
-        );
-
-    });
-
-
-
-    /* =========================================
-       PROFILE IMAGE
-    ========================================= */
-
-    /*
-       Your HTML uses:
-
-       <div class="profile">
-           <img src="profile.jpg">
-       </div>
-
-       Therefore we use ".profile img".
-    */
-
-    const profileImage =
-        document.querySelector(
-            ".profile img"
-        );
-
-
-    if (profileImage) {
-
-        profileImage.addEventListener(
-            "load",
-            () => {
-
-                console.log(
-                    "Profile image loaded successfully."
-                );
-
-            }
-        );
-
-
-        profileImage.addEventListener(
-            "error",
-            () => {
-
-                console.log(
-                    "Profile image could not be loaded."
-                );
-
-            }
-        );
 
     }
 
