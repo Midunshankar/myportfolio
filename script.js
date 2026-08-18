@@ -11,23 +11,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
         menuBtn.addEventListener("click", () => {
 
-            navLinks.classList.toggle("active");
+            const isOpen =
+                navLinks.classList.toggle("active");
+
             menuBtn.classList.toggle("active");
 
-            if (navLinks.classList.contains("active")) {
+            if (isOpen) {
 
                 menuBtn.textContent = "✕";
+
                 menuBtn.setAttribute(
                     "aria-label",
                     "Close Menu"
                 );
 
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
             } else {
 
                 menuBtn.textContent = "☰";
+
                 menuBtn.setAttribute(
                     "aria-label",
                     "Open Menu"
+                );
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
                 );
 
             }
@@ -35,27 +49,36 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-        /* Close menu after clicking a link */
+        /* Close mobile menu after clicking a link */
 
-        document.querySelectorAll(".nav-links a").forEach(link => {
+        document
+            .querySelectorAll(".nav-links a")
+            .forEach(link => {
 
-            link.addEventListener("click", () => {
+                link.addEventListener("click", () => {
 
-                navLinks.classList.remove("active");
-                menuBtn.classList.remove("active");
+                    navLinks.classList.remove("active");
 
-                menuBtn.textContent = "☰";
+                    menuBtn.classList.remove("active");
 
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open Menu"
-                );
+                    menuBtn.textContent = "☰";
+
+                    menuBtn.setAttribute(
+                        "aria-label",
+                        "Open Menu"
+                    );
+
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                });
 
             });
 
-        });
-
     }
+
 
 
     /* =========================================
@@ -86,6 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 words[wordIndex];
 
 
+            /* Typing */
+
             if (!deleting) {
 
                 typingElement.textContent =
@@ -96,6 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 charIndex++;
 
+
+                /* Word completed */
 
                 if (
                     charIndex ===
@@ -110,10 +137,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
 
                     return;
-
                 }
 
-            } else {
+            }
+
+
+            /* Deleting */
+
+            else {
 
                 typingElement.textContent =
                     currentWord.substring(
@@ -123,6 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 charIndex--;
 
+
+                /* Move to next word */
 
                 if (charIndex === 0) {
 
@@ -148,6 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
         typeEffect();
 
     }
+
 
 
     /* =========================================
@@ -203,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } else {
 
-        /* Fallback for older browsers */
+        /* Browser fallback */
 
         revealElements.forEach(element => {
 
@@ -212,6 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
+
 
 
     /* =========================================
@@ -282,6 +317,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateActiveNavigation();
 
 
+
     /* =========================================
        NAVBAR SHADOW ON SCROLL
     ========================================= */
@@ -292,7 +328,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateNavbar() {
 
-        if (!header) return;
+        if (!header) {
+            return;
+        }
 
 
         if (window.scrollY > 50) {
@@ -316,6 +354,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateNavbar();
 
 
+
     /* =========================================
        CONTACT FORM
     ========================================= */
@@ -335,25 +374,39 @@ document.addEventListener("DOMContentLoaded", () => {
                 event.preventDefault();
 
 
-                const name =
+                const nameInput =
                     contactForm.querySelector(
                         'input[name="name"]'
-                    )?.value.trim();
+                    );
 
-
-                const email =
+                const emailInput =
                     contactForm.querySelector(
                         'input[name="email"]'
-                    )?.value.trim();
+                    );
 
-
-                const message =
+                const messageInput =
                     contactForm.querySelector(
                         'textarea[name="message"]'
-                    )?.value.trim();
+                    );
 
 
-                /* Empty field check */
+                const name =
+                    nameInput
+                        ? nameInput.value.trim()
+                        : "";
+
+                const email =
+                    emailInput
+                        ? emailInput.value.trim()
+                        : "";
+
+                const message =
+                    messageInput
+                        ? messageInput.value.trim()
+                        : "";
+
+
+                /* Check empty fields */
 
                 if (
                     !name ||
@@ -366,7 +419,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
 
                     return;
-
                 }
 
 
@@ -385,15 +437,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
 
                     return;
-
                 }
 
 
                 /* Success message */
 
                 alert(
-                    `Thank you, ${name}! ` +
-                    `Your message has been received.`
+                    `Thank you, ${name}! Your message has been received.`
                 );
 
 
@@ -405,6 +455,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     }
+
 
 
     /* =========================================
@@ -423,6 +474,7 @@ document.addEventListener("DOMContentLoaded", () => {
             new Date().getFullYear();
 
     }
+
 
 
     /* =========================================
@@ -464,17 +516,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+
     /* =========================================
-       PROFILE IMAGE ERROR HANDLING
+       PROFILE IMAGE
     ========================================= */
+
+    /*
+       Your HTML uses:
+
+       <div class="profile">
+           <img src="profile.jpg">
+       </div>
+
+       Therefore we use ".profile img".
+    */
 
     const profileImage =
         document.querySelector(
-            ".profile-img"
+            ".profile img"
         );
 
 
     if (profileImage) {
+
+        profileImage.addEventListener(
+            "load",
+            () => {
+
+                console.log(
+                    "Profile image loaded successfully."
+                );
+
+            }
+        );
+
 
         profileImage.addEventListener(
             "error",
@@ -488,67 +563,5 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     }
-
-
-    /* =========================================
-       BACKGROUND COLOUR CHANGE
-    ========================================= */
-
-    const colorBtn =
-        document.querySelector("#colorBtn");
-
-
-    const backgroundColors = [
-        "#f5f7fa",
-        "#eef6ff",
-        "#f0fdf4",
-        "#fff7ed",
-        "#fdf4ff",
-        "#fefce8"
-    ];
-
-
-    let colorIndex =
-        Number(
-            localStorage.getItem("colorIndex")
-        ) || 0;
-
-
-    function applyBackgroundColor() {
-
-        document.body.style.backgroundColor =
-            backgroundColors[colorIndex];
-
-    }
-
-
-    if (colorBtn) {
-
-        colorBtn.addEventListener(
-            "click",
-            () => {
-
-                colorIndex =
-                    (colorIndex + 1) %
-                    backgroundColors.length;
-
-
-                localStorage.setItem(
-                    "colorIndex",
-                    colorIndex
-                );
-
-
-                applyBackgroundColor();
-
-            }
-        );
-
-    }
-
-
-    /* Load saved background colour */
-
-    applyBackgroundColor();
 
 });
