@@ -1,4 +1,6 @@
-/* =========================================
+
+
+   /* =========================================
    RESET & GLOBAL STYLES
 ========================================= */
 
@@ -6,6 +8,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html {
     scroll-behavior: smooth;
 }
 
@@ -71,6 +77,7 @@ header.scrolled {
 .nav-links a {
     color: #222;
     font-weight: 600;
+    position: relative;
 
     transition: 0.3s ease;
 }
@@ -78,6 +85,32 @@ header.scrolled {
 .nav-links a:hover,
 .nav-links a.active {
     color: #2563eb;
+}
+
+
+/* =========================================
+   NAVIGATION UNDERLINE
+========================================= */
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -6px;
+
+    width: 0;
+    height: 2px;
+
+    background: #2563eb;
+
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
 }
 
 
@@ -95,6 +128,12 @@ header.scrolled {
     cursor: pointer;
 
     color: #2563eb;
+
+    transition: 0.3s ease;
+}
+
+.menu-btn:hover {
+    transform: scale(1.1);
 }
 
 
@@ -110,6 +149,13 @@ header.scrolled {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f5f7fa 0%,
+            #eaf1ff 100%
+        );
 }
 
 .hero-container {
@@ -129,6 +175,8 @@ header.scrolled {
 
 .hero-content h1 {
     font-size: 52px;
+    line-height: 1.2;
+
     margin-bottom: 15px;
 }
 
@@ -145,12 +193,17 @@ header.scrolled {
 
 .typing {
     color: #2563eb;
+
+    border-right: 2px solid #2563eb;
+
+    padding-right: 4px;
 }
 
 .hero-content p {
     max-width: 600px;
 
     color: #666;
+
     font-size: 17px;
 
     margin-bottom: 30px;
@@ -187,6 +240,9 @@ header.scrolled {
 
 .profile-img:hover {
     transform: scale(1.05);
+
+    box-shadow:
+        0 20px 50px rgba(37, 99, 235, 0.25);
 }
 
 
@@ -208,16 +264,25 @@ header.scrolled {
 
     font-weight: bold;
 
+    border: 2px solid #2563eb;
+
     transition: 0.3s ease;
 }
 
 .btn:hover {
     background: #1d4ed8;
+
+    border-color: #1d4ed8;
+
     transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.25);
 }
 
 .btn-outline {
     background: transparent;
+
     color: #2563eb;
 
     border: 2px solid #2563eb;
@@ -225,6 +290,7 @@ header.scrolled {
 
 .btn-outline:hover {
     background: #2563eb;
+
     color: white;
 }
 
@@ -252,16 +318,24 @@ section {
     font-size: 35px;
 
     margin-bottom: 10px;
+
+    color: #222;
 }
 
 .section-title p {
     color: #777;
+
+    font-size: 16px;
 }
 
 
 /* =========================================
    ABOUT SECTION
 ========================================= */
+
+#about {
+    background: white;
+}
 
 .about-content {
     display: flex;
@@ -271,11 +345,23 @@ section {
     align-items: center;
 
     max-width: 900px;
+
     margin: auto;
 }
 
 .about-text {
     flex: 1;
+
+    background: #f8fafc;
+
+    padding: 35px;
+
+    border-radius: 15px;
+
+    border-left: 5px solid #2563eb;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.06);
 }
 
 .about-text h3 {
@@ -292,10 +378,18 @@ section {
     margin-bottom: 15px;
 }
 
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
 
 /* =========================================
    SKILLS SECTION
 ========================================= */
+
+#skills {
+    background: #f5f7fa;
+}
 
 .skills-container {
     display: grid;
@@ -319,16 +413,25 @@ section {
         0 5px 20px rgba(0, 0, 0, 0.08);
 
     transition: 0.3s ease;
+
+    border-top: 4px solid transparent;
 }
 
 .skill-card:hover {
     transform: translateY(-8px);
+
+    border-top-color: #2563eb;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .skill-card h3 {
     color: #2563eb;
 
     margin-bottom: 10px;
+
+    font-size: 21px;
 }
 
 .skill-card p {
@@ -340,6 +443,10 @@ section {
    PROJECTS SECTION
 ========================================= */
 
+#projects {
+    background: white;
+}
+
 .projects-container {
     display: grid;
 
@@ -350,7 +457,7 @@ section {
 }
 
 .project-card {
-    background: white;
+    background: #f8fafc;
 
     padding: 30px;
 
@@ -360,16 +467,25 @@ section {
         0 5px 20px rgba(0, 0, 0, 0.08);
 
     transition: 0.3s ease;
+
+    border-bottom: 4px solid transparent;
 }
 
 .project-card:hover {
     transform: translateY(-8px);
+
+    border-bottom-color: #2563eb;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .project-card h3 {
     color: #2563eb;
 
     margin-bottom: 12px;
+
+    font-size: 21px;
 }
 
 .project-card p {
@@ -382,6 +498,14 @@ section {
     color: #2563eb;
 
     font-weight: bold;
+
+    transition: 0.3s ease;
+}
+
+.project-card a:hover {
+    color: #1d4ed8;
+
+    padding-left: 5px;
 }
 
 
@@ -389,10 +513,23 @@ section {
    CONTACT SECTION
 ========================================= */
 
+#contact {
+    background: #f5f7fa;
+}
+
 .contact-container {
     max-width: 700px;
 
     margin: auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.08);
 }
 
 .contact-form {
@@ -415,12 +552,19 @@ section {
 
     font-size: 16px;
 
+    font-family: Arial, Helvetica, sans-serif;
+
     outline: none;
+
+    transition: 0.3s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .contact-form textarea {
@@ -435,6 +579,8 @@ section {
     cursor: pointer;
 
     font-size: 16px;
+
+    width: fit-content;
 }
 
 
@@ -450,6 +596,10 @@ section {
     gap: 25px;
 
     margin-top: 25px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #eee;
 }
 
 .social-links a {
@@ -462,6 +612,8 @@ section {
 
 .social-links a:hover {
     color: #1d4ed8;
+
+    transform: translateY(-2px);
 }
 
 
@@ -529,6 +681,7 @@ footer p {
         grid-template-columns:
             repeat(2, 1fr);
     }
+
 }
 
 
@@ -600,11 +753,13 @@ footer p {
 
     .hero-content p {
         margin-left: auto;
+
         margin-right: auto;
     }
 
     .profile-img {
         width: 220px;
+
         height: 220px;
     }
 
@@ -628,6 +783,10 @@ footer p {
         text-align: center;
     }
 
+    .about-text {
+        width: 100%;
+    }
+
 
     /* Skills */
 
@@ -640,6 +799,13 @@ footer p {
 
     .projects-container {
         grid-template-columns: 1fr;
+    }
+
+
+    /* Contact */
+
+    .contact-container {
+        padding: 25px 20px;
     }
 
 
@@ -670,8 +836,13 @@ footer p {
         font-size: 19px;
     }
 
+    .hero-content p {
+        font-size: 15px;
+    }
+
     .profile-img {
         width: 190px;
+
         height: 190px;
     }
 
@@ -692,4 +863,86 @@ footer p {
         gap: 15px;
     }
 
+    .about-text {
+        padding: 25px 20px;
+    }
+
+    .skill-card,
+    .project-card {
+        padding: 25px 20px;
+    }
+
+}
+/* =========================================
+   THEME BUTTONS
+========================================= */
+
+.theme-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 20px;
+}
+
+.theme-buttons button {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f1f5f9;
+    color: #2563eb;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.theme-buttons button:hover {
+    transform: scale(1.1);
+    background: #2563eb;
+    color: white;
+}
+
+/* Dark / Light Mode Toggle */
+
+.theme-toggle {
+    width: 55px;
+    height: 28px;
+    background: #222;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.theme-toggle::before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: 0.3s ease;
+}
+
+/* Dark mode */
+body.dark-mode {
+    background: #121212;
+    color: #fff;
+}
+
+body.dark-mode .theme-toggle {
+    background: #fff;
+}
+
+body.dark-mode .theme-toggle::before {
+    background: #222;
+    transform: translateX(27px);
 }
