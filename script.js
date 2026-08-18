@@ -14,28 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
             navLinks.classList.toggle("active");
             menuBtn.classList.toggle("active");
 
-            if (navLinks.classList.contains("active")) {
-
-                menuBtn.textContent = "✕";
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Close Menu"
-                );
-
-            } else {
-
-                menuBtn.textContent = "☰";
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open Menu"
-                );
-
-            }
-
         });
 
 
-        /* Close menu after clicking a link */
+        // Close menu when a navigation link is clicked
 
         document.querySelectorAll(".nav-links a").forEach(link => {
 
@@ -43,13 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 navLinks.classList.remove("active");
                 menuBtn.classList.remove("active");
-
-                menuBtn.textContent = "☰";
-
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open Menu"
-                );
 
             });
 
@@ -62,8 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
        TYPING ANIMATION
     ========================================= */
 
-    const typingElement =
-        document.querySelector(".typing");
+    const typingElement = document.querySelector(".typing");
 
     if (typingElement) {
 
@@ -71,8 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "B.Com IT Student",
             "Aspiring IT Professional",
             "Web Developer",
-            "Creative Learner",
-            "AI Enthusiast"
+            "Creative Learner"
         ];
 
         let wordIndex = 0;
@@ -82,56 +55,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function typeEffect() {
 
-            const currentWord =
-                words[wordIndex];
+            const currentWord = words[wordIndex];
 
+
+            // Typing
 
             if (!deleting) {
 
                 typingElement.textContent =
-                    currentWord.substring(
-                        0,
-                        charIndex + 1
-                    );
+                    currentWord.substring(0, charIndex + 1);
 
                 charIndex++;
 
 
-                if (
-                    charIndex ===
-                    currentWord.length
-                ) {
+                // Word completed
+
+                if (charIndex === currentWord.length) {
 
                     deleting = true;
 
-                    setTimeout(
-                        typeEffect,
-                        1500
-                    );
+                    setTimeout(typeEffect, 1500);
 
                     return;
-
                 }
 
-            } else {
+            }
+
+
+            // Deleting
+
+            else {
 
                 typingElement.textContent =
-                    currentWord.substring(
-                        0,
-                        charIndex - 1
-                    );
+                    currentWord.substring(0, charIndex - 1);
 
                 charIndex--;
 
+
+                // Move to next word
 
                 if (charIndex === 0) {
 
                     deleting = false;
 
                     wordIndex =
-                        (wordIndex + 1) %
-                        words.length;
-
+                        (wordIndex + 1) % words.length;
                 }
 
             }
@@ -141,7 +109,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 typeEffect,
                 deleting ? 60 : 100
             );
-
         }
 
 
@@ -154,77 +121,48 @@ document.addEventListener("DOMContentLoaded", () => {
        SCROLL REVEAL ANIMATION
     ========================================= */
 
-    const revealElements =
-        document.querySelectorAll(
-            ".section-title, " +
-            ".about-content, " +
-            ".skill-card, " +
-            ".project-card, " +
-            ".contact-container"
-        );
+    const revealElements = document.querySelectorAll(
+        ".section-title, .about-content, .skill-card, .project-card, .contact-container"
+    );
 
 
-    if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
 
-        const revealObserver =
-            new IntersectionObserver(
-                (entries, observer) => {
+            entries.forEach(entry => {
 
-                    entries.forEach(entry => {
+                if (entry.isIntersecting) {
 
-                        if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
 
-                            entry.target.classList.add(
-                                "show"
-                            );
+                    observer.unobserve(entry.target);
 
-                            observer.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.15
                 }
-            );
+
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
 
 
-        revealElements.forEach(element => {
+    revealElements.forEach(element => {
 
-            element.classList.add("reveal");
+        element.classList.add("reveal");
 
-            revealObserver.observe(element);
+        revealObserver.observe(element);
 
-        });
-
-    } else {
-
-        /* Fallback for older browsers */
-
-        revealElements.forEach(element => {
-
-            element.classList.add("show");
-
-        });
-
-    }
+    });
 
 
     /* =========================================
        ACTIVE NAVIGATION
     ========================================= */
 
-    const sections =
-        document.querySelectorAll("section");
-
-    const navItems =
-        document.querySelectorAll(
-            ".nav-links a"
-        );
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll(".nav-links a");
 
 
     function updateActiveNavigation() {
@@ -279,6 +217,9 @@ document.addEventListener("DOMContentLoaded", () => {
         updateActiveNavigation
     );
 
+
+    // Run once when the page loads
+
     updateActiveNavigation();
 
 
@@ -286,8 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
        NAVBAR SHADOW ON SCROLL
     ========================================= */
 
-    const header =
-        document.querySelector("header");
+    const header = document.querySelector("header");
 
 
     function updateNavbar() {
@@ -299,7 +239,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             header.classList.add("scrolled");
 
-        } else {
+        }
+
+        else {
 
             header.classList.remove("scrolled");
 
@@ -313,17 +255,13 @@ document.addEventListener("DOMContentLoaded", () => {
         updateNavbar
     );
 
-    updateNavbar();
-
 
     /* =========================================
        CONTACT FORM
     ========================================= */
 
     const contactForm =
-        document.querySelector(
-            ".contact-form"
-        );
+        document.querySelector(".contact-form");
 
 
     if (contactForm) {
@@ -353,51 +291,26 @@ document.addEventListener("DOMContentLoaded", () => {
                     )?.value.trim();
 
 
-                /* Empty field check */
+                // Check empty fields
 
-                if (
-                    !name ||
-                    !email ||
-                    !message
-                ) {
+                if (!name || !email || !message) {
 
                     alert(
                         "Please fill in all the fields."
                     );
 
                     return;
-
                 }
 
 
-                /* Email validation */
-
-                const emailPattern =
-                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-                if (
-                    !emailPattern.test(email)
-                ) {
-
-                    alert(
-                        "Please enter a valid email address."
-                    );
-
-                    return;
-
-                }
-
-
-                /* Success message */
+                // Success message
 
                 alert(
-                    `Thank you, ${name}! ` +
-                    `Your message has been received.`
+                    `Thank you, ${name}! Your message has been received.`
                 );
 
 
-                /* Clear form */
+                // Clear form
 
                 contactForm.reset();
 
@@ -412,9 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     const yearElement =
-        document.querySelector(
-            "#current-year"
-        );
+        document.querySelector("#current-year");
 
 
     if (yearElement) {
@@ -423,132 +334,5 @@ document.addEventListener("DOMContentLoaded", () => {
             new Date().getFullYear();
 
     }
-
-
-    /* =========================================
-       PROJECT LINKS
-    ========================================= */
-
-    const projectLinks =
-        document.querySelectorAll(
-            ".project-card a"
-        );
-
-
-    projectLinks.forEach(link => {
-
-        link.addEventListener(
-            "click",
-            event => {
-
-                const href =
-                    link.getAttribute("href");
-
-
-                if (
-                    href === "#" ||
-                    !href
-                ) {
-
-                    event.preventDefault();
-
-                    alert(
-                        "Project link will be added soon."
-                    );
-
-                }
-
-            }
-        );
-
-    });
-
-
-    /* =========================================
-       PROFILE IMAGE ERROR HANDLING
-    ========================================= */
-
-    const profileImage =
-        document.querySelector(
-            ".profile-img"
-        );
-
-
-    if (profileImage) {
-
-        profileImage.addEventListener(
-            "error",
-            () => {
-
-                console.log(
-                    "Profile image could not be loaded."
-                );
-
-            }
-        );
-
-    }
-
-
-    /* =========================================
-       BACKGROUND COLOUR CHANGE
-    ========================================= */
-
-    const colorBtn =
-        document.querySelector("#colorBtn");
-
-
-    const backgroundColors = [
-        "#f5f7fa",
-        "#eef6ff",
-        "#f0fdf4",
-        "#fff7ed",
-        "#fdf4ff",
-        "#fefce8"
-    ];
-
-
-    let colorIndex =
-        Number(
-            localStorage.getItem("colorIndex")
-        ) || 0;
-
-
-    function applyBackgroundColor() {
-
-        document.body.style.backgroundColor =
-            backgroundColors[colorIndex];
-
-    }
-
-
-    if (colorBtn) {
-
-        colorBtn.addEventListener(
-            "click",
-            () => {
-
-                colorIndex =
-                    (colorIndex + 1) %
-                    backgroundColors.length;
-
-
-                localStorage.setItem(
-                    "colorIndex",
-                    colorIndex
-                );
-
-
-                applyBackgroundColor();
-
-            }
-        );
-
-    }
-
-
-    /* Load saved background colour */
-
-    applyBackgroundColor();
 
 });
