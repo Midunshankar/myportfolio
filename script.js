@@ -11,23 +11,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
         menuBtn.addEventListener("click", () => {
 
-            navLinks.classList.toggle("active");
+            const isOpen =
+                navLinks.classList.toggle("active");
+
             menuBtn.classList.toggle("active");
 
-            if (navLinks.classList.contains("active")) {
+            if (isOpen) {
 
                 menuBtn.textContent = "✕";
+
                 menuBtn.setAttribute(
                     "aria-label",
                     "Close Menu"
                 );
 
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
             } else {
 
                 menuBtn.textContent = "☰";
+
                 menuBtn.setAttribute(
                     "aria-label",
                     "Open Menu"
+                );
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
                 );
 
             }
@@ -37,25 +51,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /* Close menu after clicking a link */
 
-        document.querySelectorAll(".nav-links a").forEach(link => {
+        document
+            .querySelectorAll(".nav-links a")
+            .forEach(link => {
 
-            link.addEventListener("click", () => {
+                link.addEventListener("click", () => {
 
-                navLinks.classList.remove("active");
-                menuBtn.classList.remove("active");
+                    navLinks.classList.remove("active");
 
-                menuBtn.textContent = "☰";
+                    menuBtn.classList.remove("active");
 
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open Menu"
-                );
+                    menuBtn.textContent = "☰";
+
+                    menuBtn.setAttribute(
+                        "aria-label",
+                        "Open Menu"
+                    );
+
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                });
 
             });
 
-        });
-
     }
+
 
 
     /* =========================================
@@ -86,6 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 words[wordIndex];
 
 
+            /* Typing */
+
             if (!deleting) {
 
                 typingElement.textContent =
@@ -96,6 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 charIndex++;
 
+
+                /* Word completed */
 
                 if (
                     charIndex ===
@@ -110,10 +137,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
 
                     return;
-
                 }
 
-            } else {
+            }
+
+
+            /* Deleting */
+
+            else {
 
                 typingElement.textContent =
                     currentWord.substring(
@@ -123,6 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 charIndex--;
 
+
+                /* Move to next word */
 
                 if (charIndex === 0) {
 
@@ -150,6 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+
     /* =========================================
        SCROLL REVEAL ANIMATION
     ========================================= */
@@ -159,12 +193,13 @@ document.addEventListener("DOMContentLoaded", () => {
             ".section-title, " +
             ".about-content, " +
             ".skill-card, " +
-            ".project-card, " +
-            ".contact-container"
+            ".project-card"
         );
 
 
-    if ("IntersectionObserver" in window) {
+    if (
+        "IntersectionObserver" in window
+    ) {
 
         const revealObserver =
             new IntersectionObserver(
@@ -172,7 +207,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     entries.forEach(entry => {
 
-                        if (entry.isIntersecting) {
+                        if (
+                            entry.isIntersecting
+                        ) {
 
                             entry.target.classList.add(
                                 "show"
@@ -203,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } else {
 
-        /* Fallback for older browsers */
+        /* Fallback */
 
         revealElements.forEach(element => {
 
@@ -212,6 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
+
 
 
     /* =========================================
@@ -282,6 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateActiveNavigation();
 
 
+
     /* =========================================
        NAVBAR SHADOW ON SCROLL
     ========================================= */
@@ -292,7 +331,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateNavbar() {
 
-        if (!header) return;
+        if (!header) {
+            return;
+        }
 
 
         if (window.scrollY > 50) {
@@ -316,96 +357,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateNavbar();
 
 
-    /* =========================================
-       CONTACT FORM
-    ========================================= */
-
-    const contactForm =
-        document.querySelector(
-            ".contact-form"
-        );
-
-
-    if (contactForm) {
-
-        contactForm.addEventListener(
-            "submit",
-            event => {
-
-                event.preventDefault();
-
-
-                const name =
-                    contactForm.querySelector(
-                        'input[name="name"]'
-                    )?.value.trim();
-
-
-                const email =
-                    contactForm.querySelector(
-                        'input[name="email"]'
-                    )?.value.trim();
-
-
-                const message =
-                    contactForm.querySelector(
-                        'textarea[name="message"]'
-                    )?.value.trim();
-
-
-                /* Empty field check */
-
-                if (
-                    !name ||
-                    !email ||
-                    !message
-                ) {
-
-                    alert(
-                        "Please fill in all the fields."
-                    );
-
-                    return;
-
-                }
-
-
-                /* Email validation */
-
-                const emailPattern =
-                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-                if (
-                    !emailPattern.test(email)
-                ) {
-
-                    alert(
-                        "Please enter a valid email address."
-                    );
-
-                    return;
-
-                }
-
-
-                /* Success message */
-
-                alert(
-                    `Thank you, ${name}! ` +
-                    `Your message has been received.`
-                );
-
-
-                /* Clear form */
-
-                contactForm.reset();
-
-            }
-        );
-
-    }
-
 
     /* =========================================
        CURRENT YEAR
@@ -423,6 +374,7 @@ document.addEventListener("DOMContentLoaded", () => {
             new Date().getFullYear();
 
     }
+
 
 
     /* =========================================
@@ -464,8 +416,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+
     /* =========================================
-       PROFILE IMAGE ERROR HANDLING
+       PROFILE IMAGE
     ========================================= */
 
     const profileImage =
@@ -477,12 +430,27 @@ document.addEventListener("DOMContentLoaded", () => {
     if (profileImage) {
 
         profileImage.addEventListener(
-            "error",
+            "load",
             () => {
 
                 console.log(
+                    "Profile image loaded successfully."
+                );
+
+            }
+        );
+
+
+        profileImage.addEventListener(
+            "error",
+            () => {
+
+                console.error(
                     "Profile image could not be loaded."
                 );
+
+                profileImage.alt =
+                    "Profile image unavailable";
 
             }
         );
@@ -490,28 +458,57 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+
     /* =========================================
        BACKGROUND COLOUR CHANGE
     ========================================= */
 
     const colorBtn =
-        document.querySelector("#colorBtn");
+        document.querySelector(
+            "#colorBtn"
+        );
 
 
     const backgroundColors = [
+
         "#f5f7fa",
+
         "#eef6ff",
+
         "#f0fdf4",
+
         "#fff7ed",
+
         "#fdf4ff",
+
         "#fefce8"
+
     ];
 
 
+    let savedColorIndex =
+        localStorage.getItem(
+            "colorIndex"
+        );
+
+
     let colorIndex =
-        Number(
-            localStorage.getItem("colorIndex")
-        ) || 0;
+        savedColorIndex !== null
+            ? Number(savedColorIndex)
+            : 0;
+
+
+    /* Make sure the saved value is valid */
+
+    if (
+        Number.isNaN(colorIndex) ||
+        colorIndex < 0 ||
+        colorIndex >= backgroundColors.length
+    ) {
+
+        colorIndex = 0;
+
+    }
 
 
     function applyBackgroundColor() {
