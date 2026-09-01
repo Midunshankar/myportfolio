@@ -881,86 +881,197 @@ footer p {
     }
 
 }
-/* =================================
-   THEME TOGGLE BUTTON
-================================= */
+/* =========================================
+   FULL PORTFOLIO 4 THEME SYSTEM
+========================================= */
 
-#theme-toggle {
-    width: 45px;
-    height: 45px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-
-    font-size: 22px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition: all 0.3s ease;
-
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+/* Smooth transition */
+body,
+nav,
+header,
+section,
+.card,
+.skill,
+.stat,
+footer {
+    transition:
+        background 0.8s ease,
+        background-color 0.8s ease,
+        color 0.5s ease,
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
 }
 
-#theme-toggle:hover {
-    transform: scale(1.15) rotate(10deg);
-}
 
-/* =================================
-   MORNING THEME
-================================= */
+/* =========================================
+   🌅 MORNING
+========================================= */
 
 body.morning {
+
     background:
         radial-gradient(
-            circle at 75% 8%,
-            rgba(255, 238, 150, 0.9),
+            circle at 80% 10%,
+            rgba(255, 230, 120, 0.9),
             transparent 30%
         ),
         linear-gradient(
             180deg,
-            #fff8d6,
-            #ffe9a8,
-            #ffd66b
+            #fff8dc,
+            #ffe9a6,
+            #ffd166
         );
 
     color: #3b2a00;
 }
 
-/* =================================
-   AFTERNOON THEME
-================================= */
+
+/* Navbar */
+
+body.morning nav {
+    background: rgba(255, 248, 220, 0.95);
+}
+
+body.morning nav a {
+    color: #3b2a00;
+}
+
+
+/* Header */
+
+body.morning header {
+    background: transparent;
+}
+
+body.morning h1,
+body.morning h2,
+body.morning h3,
+body.morning p,
+body.morning li {
+    color: #3b2a00;
+}
+
+
+/* Highlight */
+
+body.morning .highlight {
+    color: #d97706;
+}
+
+body.morning .hero-role {
+    color: #a16207;
+}
+
+
+/* Cards */
+
+body.morning .card,
+body.morning .skill,
+body.morning .stat {
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(120, 85, 20, 0.25);
+    color: #3b2a00;
+}
+
+
+/* Footer */
+
+body.morning footer {
+    background: rgba(120, 85, 20, 0.15);
+    color: #3b2a00;
+}
+
+
+/* =========================================
+   ☀️ AFTERNOON
+========================================= */
 
 body.afternoon {
+
     background:
         radial-gradient(
-            circle at 20% 15%,
-            rgba(255, 255, 255, 0.8),
-            transparent 25%
+            circle at 20% 10%,
+            rgba(255, 255, 255, 0.9),
+            transparent 30%
         ),
         linear-gradient(
             180deg,
-            #dff3ff,
-            #b9dcf5,
-            #a9c9df
+            #dff4ff,
+            #b9ddf5,
+            #91c5e8
         );
 
     color: #17324d;
 }
 
-/* =================================
-   EVENING THEME
-================================= */
+
+/* Navbar */
+
+body.afternoon nav {
+    background: rgba(220, 242, 255, 0.95);
+}
+
+body.afternoon nav a {
+    color: #17324d;
+}
+
+
+/* Header */
+
+body.afternoon header {
+    background: transparent;
+}
+
+
+/* Text */
+
+body.afternoon h1,
+body.afternoon h2,
+body.afternoon h3,
+body.afternoon p,
+body.afternoon li {
+    color: #17324d;
+}
+
+
+body.afternoon .highlight {
+    color: #0284c7;
+}
+
+body.afternoon .hero-role {
+    color: #2563a8;
+}
+
+
+/* Cards */
+
+body.afternoon .card,
+body.afternoon .skill,
+body.afternoon .stat {
+    background: rgba(255, 255, 255, 0.48);
+    border: 1px solid rgba(30, 64, 90, 0.20);
+    color: #17324d;
+}
+
+
+/* Footer */
+
+body.afternoon footer {
+    background: rgba(30, 64, 90, 0.12);
+    color: #17324d;
+}
+
+
+/* =========================================
+   🌧️ EVENING
+========================================= */
 
 body.evening {
+
     background:
         radial-gradient(
-            circle at 70% 15%,
-            rgba(99, 102, 241, 0.28),
+            circle at 75% 10%,
+            rgba(99, 102, 241, 0.35),
             transparent 30%
         ),
         linear-gradient(
@@ -973,20 +1084,79 @@ body.evening {
     color: #e5edff;
 }
 
-/* =================================
-   NIGHT THEME
-================================= */
+
+/* Navbar */
+
+body.evening nav {
+    background: rgba(15, 23, 42, 0.92);
+}
+
+body.evening nav a {
+    color: #e5edff;
+}
+
+
+/* Header */
+
+body.evening header {
+    background: transparent;
+}
+
+
+/* Text */
+
+body.evening h1,
+body.evening h2,
+body.evening h3,
+body.evening p,
+body.evening li {
+    color: #e5edff;
+}
+
+
+body.evening .highlight {
+    color: #60a5fa;
+}
+
+body.evening .hero-role {
+    color: #a5b4fc;
+}
+
+
+/* Cards */
+
+body.evening .card,
+body.evening .skill,
+body.evening .stat {
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(165, 180, 252, 0.25);
+    color: #e5edff;
+}
+
+
+/* Footer */
+
+body.evening footer {
+    background: #020617;
+    color: #cbd5e1;
+}
+
+
+/* =========================================
+   🌌 NIGHT
+========================================= */
 
 body.night {
+
     background:
         radial-gradient(
-            ellipse at 50% 25%,
-            rgba(91, 33, 182, 0.32),
-            transparent 38%
+            ellipse at 50% 20%,
+            rgba(91, 33, 182, 0.40),
+            transparent 35%
         ),
         radial-gradient(
             ellipse at 80% 70%,
-            rgba(30, 64, 175, 0.22),
+            rgba(30, 64, 175, 0.25),
             transparent 35%
         ),
         linear-gradient(
@@ -999,74 +1169,160 @@ body.night {
     color: #e5e7ff;
 }
 
-/* =================================
-   THEME TRANSITION
-================================= */
 
-body,
-nav,
-header,
-section,
-.card,
-.skill,
-.stat,
-footer {
-    transition:
-        background 0.8s ease,
-        color 0.5s ease,
-        border-color 0.5s ease;
-}
-
-/* =================================
-   NAVBAR THEMES
-================================= */
-
-body.morning nav {
-    background: rgba(255, 248, 214, 0.9);
-}
-
-body.afternoon nav {
-    background: rgba(224, 243, 255, 0.9);
-}
-
-body.evening nav {
-    background: rgba(15, 23, 42, 0.85);
-}
+/* Navbar */
 
 body.night nav {
-    background: rgba(2, 6, 23, 0.9);
+    background: rgba(2, 6, 23, 0.94);
 }
 
-/* =================================
-   NAVIGATION TEXT
-================================= */
-
-body.morning nav a,
-body.afternoon nav a {
-    color: #17324d;
-}
-
-body.evening nav a,
 body.night nav a {
-    color: white;
+    color: #e5e7ff;
 }
 
-/* =================================
-   THEME BUTTON COLORS
-================================= */
 
-body.morning #theme-toggle {
+/* Header */
+
+body.night header {
+    background: transparent;
+}
+
+
+/* Text */
+
+body.night h1,
+body.night h2,
+body.night h3,
+body.night p,
+body.night li {
+    color: #e5e7ff;
+}
+
+
+body.night .highlight {
+    color: #60a5fa;
+}
+
+body.night .hero-role {
+    color: #c4b5fd;
+}
+
+
+/* Cards */
+
+body.night .card,
+body.night .skill,
+body.night .stat {
+    background: rgba(15, 23, 42, 0.58);
+    border: 1px solid rgba(196, 181, 253, 0.25);
+    color: #e5e7ff;
+}
+
+
+/* Footer */
+
+body.night footer {
+    background: #020617;
+    color: #cbd5e1;
+}
+
+
+/* =========================================
+   PROFILE PICTURE GLOW
+========================================= */
+
+body.morning .profile-pic {
+    box-shadow: 0 0 35px rgba(245, 158, 11, 0.55);
+}
+
+body.afternoon .profile-pic {
+    box-shadow: 0 0 35px rgba(14, 165, 233, 0.50);
+}
+
+body.evening .profile-pic {
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.60);
+}
+
+body.night .profile-pic {
+    box-shadow:
+        0 0 40px rgba(139, 92, 246, 0.70),
+        0 0 80px rgba(59, 130, 246, 0.30);
+}
+
+
+/* =========================================
+   THEME BUTTON
+========================================= */
+
+#theme-toggle {
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 22px;
+    background: rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.15) rotate(10deg);
+}
+
+
+/* =========================================
+   BUTTON COLORS
+========================================= */
+
+body.morning .btn.primary {
     background: #d97706;
 }
 
-body.afternoon #theme-toggle {
+body.afternoon .btn.primary {
     background: #0284c7;
 }
 
-body.evening #theme-toggle {
+body.evening .btn.primary {
     background: #4f46e5;
 }
 
-body.night #theme-toggle {
+body.night .btn.primary {
     background: #7c3aed;
+}
+
+
+/* Secondary button */
+
+body.morning .btn.secondary,
+body.afternoon .btn.secondary {
+    color: #17324d;
+    border-color: #17324d;
+}
+
+body.evening .btn.secondary,
+body.night .btn.secondary {
+    color: #e5e7ff;
+    border-color: #e5e7ff;
+}
+
+
+/* =========================================
+   SECTION TITLES
+========================================= */
+
+body.morning .section-title {
+    color: #d97706;
+}
+
+body.afternoon .section-title {
+    color: #0284c7;
+}
+
+body.evening .section-title {
+    color: #60a5fa;
+}
+
+body.night .section-title {
+    color: #a78bfa;
 }
