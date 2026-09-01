@@ -954,3 +954,71 @@ body.dark-mode .theme-toggle::before {
     background: #222;
     transform: translateX(27px);
 }
+/* =================================
+   THEME TOGGLE BUTTON
+================================= */
+
+.theme-selector {
+    display: flex;
+    align-items: center;
+}
+
+#theme-toggle {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+    transition:
+        transform 0.3s ease,
+        background 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.12) rotate(8deg);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+}
+
+/* Morning */
+body.morning #theme-toggle {
+    background: #d97706;
+}
+
+/* Afternoon */
+body.afternoon #theme-toggle {
+    background: #0284c7;
+}
+
+/* Evening */
+body.evening #theme-toggle {
+    background: #4f46e5;
+}
+
+/* Night */
+body.night #theme-toggle {
+    background: #312e81;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    #theme-toggle {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+}
