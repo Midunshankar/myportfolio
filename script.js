@@ -17,26 +17,18 @@ document.addEventListener("DOMContentLoaded", () => {
             if (navLinks.classList.contains("active")) {
 
                 menuBtn.textContent = "✕";
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Close Menu"
-                );
+                menuBtn.setAttribute("aria-label", "Close Menu");
 
             } else {
 
                 menuBtn.textContent = "☰";
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open Menu"
-                );
+                menuBtn.setAttribute("aria-label", "Open Menu");
 
             }
 
         });
 
-
         // Close mobile menu after clicking a link
-
         document.querySelectorAll(".nav-links a").forEach(link => {
 
             link.addEventListener("click", () => {
@@ -45,11 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 menuBtn.classList.remove("active");
 
                 menuBtn.textContent = "☰";
-
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open Menu"
-                );
+                menuBtn.setAttribute("aria-label", "Open Menu");
 
             });
 
@@ -62,8 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
        TYPING ANIMATION
     ========================================= */
 
-    const typingElement =
-        document.querySelector(".typing");
+    const typingElement = document.querySelector(".typing");
 
     if (typingElement) {
 
@@ -79,85 +66,55 @@ document.addEventListener("DOMContentLoaded", () => {
         let charIndex = 0;
         let deleting = false;
 
-
         function typeEffect() {
 
-            const currentWord =
-                words[wordIndex];
-
+            const currentWord = words[wordIndex];
 
             // Typing
-
             if (!deleting) {
 
                 typingElement.textContent =
-                    currentWord.substring(
-                        0,
-                        charIndex + 1
-                    );
+                    currentWord.substring(0, charIndex + 1);
 
                 charIndex++;
 
-
                 // Word completed
-
-                if (
-                    charIndex ===
-                    currentWord.length
-                ) {
+                if (charIndex === currentWord.length) {
 
                     deleting = true;
 
-                    setTimeout(
-                        typeEffect,
-                        1500
-                    );
+                    setTimeout(typeEffect, 1500);
 
                     return;
-
                 }
 
             }
 
-
             // Deleting
-
             else {
 
                 typingElement.textContent =
-                    currentWord.substring(
-                        0,
-                        charIndex - 1
-                    );
+                    currentWord.substring(0, charIndex - 1);
 
                 charIndex--;
 
-
                 // Next word
-
                 if (charIndex === 0) {
 
                     deleting = false;
 
                     wordIndex =
-                        (wordIndex + 1) %
-                        words.length;
-
+                        (wordIndex + 1) % words.length;
                 }
-
             }
-
 
             setTimeout(
                 typeEffect,
                 deleting ? 60 : 100
             );
-
         }
 
-
         typeEffect();
-
     }
 
 
@@ -165,47 +122,37 @@ document.addEventListener("DOMContentLoaded", () => {
        SCROLL REVEAL ANIMATION
     ========================================= */
 
-    const revealElements =
-        document.querySelectorAll(
-            ".section-title, " +
-            ".about-content, " +
-            ".skill-card, " +
-            ".project-card, " +
-            ".contact-container"
-        );
+    const revealElements = document.querySelectorAll(
+        ".section-title, " +
+        ".about-content, " +
+        ".skill-card, " +
+        ".project-card, " +
+        ".contact-container"
+    );
 
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
 
-    const revealObserver =
-        new IntersectionObserver(
-            (entries, observer) => {
+            entries.forEach(entry => {
 
-                entries.forEach(entry => {
+                if (entry.isIntersecting) {
 
-                    if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
 
-                        entry.target.classList.add(
-                            "show"
-                        );
+                    observer.unobserve(entry.target);
+                }
 
-                        observer.unobserve(
-                            entry.target
-                        );
+            });
 
-                    }
-
-                });
-
-            },
-            {
-                threshold: 0.15
-            }
-        );
-
+        },
+        {
+            threshold: 0.15
+        }
+    );
 
     revealElements.forEach(element => {
 
         element.classList.add("reveal");
-
         revealObserver.observe(element);
 
     });
@@ -215,19 +162,15 @@ document.addEventListener("DOMContentLoaded", () => {
        ACTIVE NAVIGATION
     ========================================= */
 
-    const sections =
-        document.querySelectorAll("section");
+    const sections = document.querySelectorAll("section");
 
-    const navItems =
-        document.querySelectorAll(
-            ".nav-links a"
-        );
-
+    const navItems = document.querySelectorAll(
+        ".nav-links a"
+    );
 
     function updateActiveNavigation() {
 
         let currentSection = "";
-
 
         sections.forEach(section => {
 
@@ -237,11 +180,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const sectionHeight =
                 section.offsetHeight;
 
-
             if (
                 window.scrollY >= sectionTop &&
-                window.scrollY <
-                sectionTop + sectionHeight
+                window.scrollY < sectionTop + sectionHeight
             ) {
 
                 currentSection =
@@ -251,11 +192,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-
         navItems.forEach(item => {
 
             item.classList.remove("active");
-
 
             if (
                 item.getAttribute("href") ===
@@ -263,19 +202,16 @@ document.addEventListener("DOMContentLoaded", () => {
             ) {
 
                 item.classList.add("active");
-
             }
 
         });
 
     }
 
-
     window.addEventListener(
         "scroll",
         updateActiveNavigation
     );
-
 
     updateActiveNavigation();
 
@@ -284,14 +220,11 @@ document.addEventListener("DOMContentLoaded", () => {
        NAVBAR SHADOW ON SCROLL
     ========================================= */
 
-    const header =
-        document.querySelector("header");
-
+    const header = document.querySelector("header");
 
     function updateNavbar() {
 
         if (!header) return;
-
 
         if (window.scrollY > 50) {
 
@@ -300,17 +233,14 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
 
             header.classList.remove("scrolled");
-
         }
 
     }
-
 
     window.addEventListener(
         "scroll",
         updateNavbar
     );
-
 
     updateNavbar();
 
@@ -319,11 +249,9 @@ document.addEventListener("DOMContentLoaded", () => {
        CONTACT FORM
     ========================================= */
 
-    const contactForm =
-        document.querySelector(
-            ".contact-form"
-        );
-
+    const contactForm = document.querySelector(
+        ".contact-form"
+    );
 
     if (contactForm) {
 
@@ -333,18 +261,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 event.preventDefault();
 
-
                 const name =
                     contactForm.querySelector(
                         'input[name="name"]'
                     )?.value.trim();
 
-
                 const email =
                     contactForm.querySelector(
                         'input[name="email"]'
                     )?.value.trim();
-
 
                 const message =
                     contactForm.querySelector(
@@ -353,43 +278,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 // Empty field check
-
-                if (
-                    !name ||
-                    !email ||
-                    !message
-                ) {
+                if (!name || !email || !message) {
 
                     alert(
                         "Please fill in all the fields."
                     );
 
                     return;
-
                 }
 
 
                 // Email validation
-
                 const emailPattern =
                     /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-
-                if (
-                    !emailPattern.test(email)
-                ) {
+                if (!emailPattern.test(email)) {
 
                     alert(
                         "Please enter a valid email address."
                     );
 
                     return;
-
                 }
 
 
                 // Success message
-
                 alert(
                     `Thank you, ${name}! ` +
                     `Your message has been received.`
@@ -397,7 +310,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 // Clear form
-
                 contactForm.reset();
 
             }
@@ -411,10 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     const yearElement =
-        document.querySelector(
-            "#current-year"
-        );
-
+        document.querySelector("#current-year");
 
     if (yearElement) {
 
@@ -433,7 +342,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ".project-card a"
         );
 
-
     projectLinks.forEach(link => {
 
         link.addEventListener(
@@ -443,11 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const href =
                     link.getAttribute("href");
 
-
-                if (
-                    href === "#" ||
-                    !href
-                ) {
+                if (href === "#" || !href) {
 
                     event.preventDefault();
 
@@ -468,10 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     const profileImage =
-        document.querySelector(
-            ".profile-img"
-        );
-
+        document.querySelector(".profile-img");
 
     if (profileImage) {
 
@@ -487,3 +388,5 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     }
+
+}); // ← IMPORTANT: closes DOMContentLoaded
