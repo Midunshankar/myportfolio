@@ -881,87 +881,9 @@ footer p {
     }
 
 }
-/* =========================================
-   THEME BUTTONS
-========================================= */
-
-.theme-buttons {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-left: 20px;
-}
-
-.theme-buttons button {
-    width: 40px;
-    height: 40px;
-
-    border: none;
-    border-radius: 50%;
-
-    background: #f1f5f9;
-    color: #2563eb;
-
-    font-size: 20px;
-
-    cursor: pointer;
-
-    transition: 0.3s ease;
-}
-
-.theme-buttons button:hover {
-    transform: scale(1.1);
-    background: #2563eb;
-    color: white;
-}
-
-/* Dark / Light Mode Toggle */
-
-.theme-toggle {
-    width: 55px;
-    height: 28px;
-    background: #222;
-    border-radius: 30px;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    transition: 0.3s ease;
-}
-
-.theme-toggle::before {
-    content: "";
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    background: #fff;
-    border-radius: 50%;
-    top: 3px;
-    left: 3px;
-    transition: 0.3s ease;
-}
-
-/* Dark mode */
-body.dark-mode {
-    background: #121212;
-    color: #fff;
-}
-
-body.dark-mode .theme-toggle {
-    background: #fff;
-}
-
-body.dark-mode .theme-toggle::before {
-    background: #222;
-    transform: translateX(27px);
-}
 /* =================================
    THEME TOGGLE BUTTON
 ================================= */
-
-.theme-selector {
-    display: flex;
-    align-items: center;
-}
 
 #theme-toggle {
     width: 45px;
@@ -970,55 +892,181 @@ body.dark-mode .theme-toggle::before {
     border-radius: 50%;
     cursor: pointer;
 
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+
+    font-size: 22px;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 22px;
+    transition: all 0.3s ease;
 
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-
-    border: 1px solid rgba(255, 255, 255, 0.25);
-
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-
-    transition:
-        transform 0.3s ease,
-        background 0.4s ease,
-        box-shadow 0.4s ease;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
 }
 
 #theme-toggle:hover {
-    transform: scale(1.12) rotate(8deg);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+    transform: scale(1.15) rotate(10deg);
 }
 
-/* Morning */
+/* =================================
+   MORNING THEME
+================================= */
+
+body.morning {
+    background:
+        radial-gradient(
+            circle at 75% 8%,
+            rgba(255, 238, 150, 0.9),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #fff8d6,
+            #ffe9a8,
+            #ffd66b
+        );
+
+    color: #3b2a00;
+}
+
+/* =================================
+   AFTERNOON THEME
+================================= */
+
+body.afternoon {
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(255, 255, 255, 0.8),
+            transparent 25%
+        ),
+        linear-gradient(
+            180deg,
+            #dff3ff,
+            #b9dcf5,
+            #a9c9df
+        );
+
+    color: #17324d;
+}
+
+/* =================================
+   EVENING THEME
+================================= */
+
+body.evening {
+    background:
+        radial-gradient(
+            circle at 70% 15%,
+            rgba(99, 102, 241, 0.28),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #1e3a5f,
+            #172554,
+            #0f172a
+        );
+
+    color: #e5edff;
+}
+
+/* =================================
+   NIGHT THEME
+================================= */
+
+body.night {
+    background:
+        radial-gradient(
+            ellipse at 50% 25%,
+            rgba(91, 33, 182, 0.32),
+            transparent 38%
+        ),
+        radial-gradient(
+            ellipse at 80% 70%,
+            rgba(30, 64, 175, 0.22),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #020617,
+            #0f172a,
+            #1e1b4b
+        );
+
+    color: #e5e7ff;
+}
+
+/* =================================
+   THEME TRANSITION
+================================= */
+
+body,
+nav,
+header,
+section,
+.card,
+.skill,
+.stat,
+footer {
+    transition:
+        background 0.8s ease,
+        color 0.5s ease,
+        border-color 0.5s ease;
+}
+
+/* =================================
+   NAVBAR THEMES
+================================= */
+
+body.morning nav {
+    background: rgba(255, 248, 214, 0.9);
+}
+
+body.afternoon nav {
+    background: rgba(224, 243, 255, 0.9);
+}
+
+body.evening nav {
+    background: rgba(15, 23, 42, 0.85);
+}
+
+body.night nav {
+    background: rgba(2, 6, 23, 0.9);
+}
+
+/* =================================
+   NAVIGATION TEXT
+================================= */
+
+body.morning nav a,
+body.afternoon nav a {
+    color: #17324d;
+}
+
+body.evening nav a,
+body.night nav a {
+    color: white;
+}
+
+/* =================================
+   THEME BUTTON COLORS
+================================= */
+
 body.morning #theme-toggle {
     background: #d97706;
 }
 
-/* Afternoon */
 body.afternoon #theme-toggle {
     background: #0284c7;
 }
 
-/* Evening */
 body.evening #theme-toggle {
     background: #4f46e5;
 }
 
-/* Night */
 body.night #theme-toggle {
-    background: #312e81;
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-    #theme-toggle {
-        width: 38px;
-        height: 38px;
-        font-size: 18px;
-    }
+    background: #7c3aed;
 }
