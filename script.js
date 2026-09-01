@@ -20,7 +20,28 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
         });
+// PROFILE IMAGE
+    const profileImage = document.querySelector(".profile-img");
 
+    if (profileImage) {
+
+        // Check if image loads correctly
+        profileImage.addEventListener("load", () => {
+            console.log("Profile image loaded successfully.");
+        });
+
+        // If image cannot be loaded
+        profileImage.addEventListener("error", () => {
+            console.log("Profile image could not be loaded.");
+
+            profileImage.src = "profile.jpg";
+        });
+
+        // Click effect
+        profileImage.addEventListener("click", () => {
+            profileImage.classList.toggle("profile-zoom");
+        });
+    }
         document.querySelectorAll(".nav-links a").forEach(link => {
 
             link.addEventListener("click", () => {
@@ -303,24 +324,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
-    // PROFILE IMAGE ERROR
-    const profileImage =
-        document.querySelector(".profile-img");
-
-    if (profileImage) {
-
-        profileImage.addEventListener(
-            "error",
-            () => {
-
-                console.log(
-                    "Profile image could not be loaded."
-                );
-
-            }
-        );
-
-    }
-
-});
