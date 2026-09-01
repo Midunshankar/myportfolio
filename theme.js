@@ -1,6 +1,4 @@
-// =================================
-// 4 THEME SYSTEM
-// =================================
+
 
 const themeToggle = document.getElementById("theme-toggle");
 
