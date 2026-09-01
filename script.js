@@ -325,60 +325,117 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-const toggle = document.getElementById("theme-toggle");
+// =====================================================
+// 4 THEME SYSTEM
+// Morning → Afternoon → Evening → Night
+// =====================================================
 
-const themes = [
-    {
-        name: "morning",
-        icon: "🌅"
-    },
-    {
-        name: "afternoon",
-        icon: "☁️"
-    },
-    {
-        name: "evening",
-        icon: "🌧️"
-    },
-    {
-        name: "night",
-        icon: "🌌"
+document.addEventListener("DOMContentLoaded", function () {
+
+    const toggle = document.getElementById("theme-toggle");
+
+    // Stop if button doesn't exist
+    if (!toggle) {
+        console.error("Theme button #theme-toggle not found!");
+        return;
     }
-];
-
-let currentTheme = 0;
-
-function applyTheme() {
-
-    document.body.classList.remove(
-        "morning",
-        "afternoon",
-        "evening",
-        "night",
-        "light-mode"
-    );
-
-    const theme = themes[currentTheme];
-
-    document.body.classList.add(theme.name);
-
-    toggle.textContent = theme.icon;
-}
 
 
-// Start with Morning
-applyTheme();
+    // =================================================
+    // THEMES
+    // =================================================
+
+    const themes = [
+        {
+            name: "morning",
+            icon: "🌅"
+        },
+
+        {
+            name: "afternoon",
+            icon: "☁️"
+        },
+
+        {
+            name: "evening",
+            icon: "🌧️"
+        },
+
+        {
+            name: "night",
+            icon: "🌌"
+        }
+    ];
 
 
-// Change theme when button is clicked
-toggle.addEventListener("click", () => {
+    // =================================================
+    // CURRENT THEME
+    // =================================================
 
-    currentTheme++;
+    let currentTheme = 0;
 
-    if (currentTheme >= themes.length) {
-        currentTheme = 0;
+
+    // =================================================
+    // APPLY THEME
+    // =================================================
+
+    function applyTheme() {
+
+        // Remove all old themes
+        document.body.classList.remove(
+            "morning",
+            "afternoon",
+            "evening",
+            "night"
+        );
+
+
+        // Get current theme
+        const theme = themes[currentTheme];
+
+
+        // Add theme to BODY
+        document.body.classList.add(theme.name);
+
+
+        // Change theme button icon
+        toggle.textContent = theme.icon;
+
+
+        // Change tooltip
+        toggle.title = "Current Theme: " + theme.name;
+
+
+        console.log("Theme changed to:", theme.name);
     }
+
+
+    // =================================================
+    // FIRST THEME
+    // =================================================
 
     applyTheme();
+
+
+    // =================================================
+    // THEME BUTTON CLICK
+    // =================================================
+
+    toggle.addEventListener("click", function () {
+
+        // Move to next theme
+        currentTheme++;
+
+
+        // Go back to Morning after Night
+        if (currentTheme >= themes.length) {
+            currentTheme = 0;
+        }
+
+
+        // Apply new theme
+        applyTheme();
+
+    });
 
 });
