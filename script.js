@@ -323,9 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     });
-// ===============================
-// 4 THEME SYSTEM
-// ===============================
+
 
 const toggle = document.getElementById("theme-toggle");
 
