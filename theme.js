@@ -1,4 +1,6 @@
-
+// ========================================
+// FULL PORTFOLIO THEME TOGGLE
+// ========================================
 
 const themeToggle = document.getElementById("theme-toggle");
 
@@ -9,7 +11,7 @@ const themes = [
     },
     {
         name: "afternoon",
-        icon: "☁️"
+        icon: "☀️"
     },
     {
         name: "evening",
@@ -24,12 +26,10 @@ const themes = [
 let currentTheme = 0;
 
 
-// =================================
-// APPLY THEME
-// =================================
-
+// Apply theme to the FULL website
 function applyTheme() {
 
+    // Remove old themes
     document.body.classList.remove(
         "morning",
         "afternoon",
@@ -37,34 +37,27 @@ function applyTheme() {
         "night"
     );
 
+    // Get current theme
     const selectedTheme = themes[currentTheme];
 
+    // Add new theme
     document.body.classList.add(selectedTheme.name);
 
+    // Change button icon
     themeToggle.textContent = selectedTheme.icon;
-
-    themeToggle.setAttribute(
-        "title",
-        "Current theme: " + selectedTheme.name
-    );
 }
 
 
-// =================================
-// START WITH MORNING
-// =================================
-
+// Start with Morning
 applyTheme();
 
 
-// =================================
-// CHANGE THEME
-// =================================
-
+// Change theme when button is clicked
 themeToggle.addEventListener("click", function () {
 
     currentTheme++;
 
+    // Go back to Morning after Night
     if (currentTheme >= themes.length) {
         currentTheme = 0;
     }
