@@ -327,7 +327,10 @@ document.addEventListener("DOMContentLoaded", () => {
  
 
 document.addEventListener("DOMContentLoaded", function () {
-
+ // =====================================================
+// 4 THEME SYSTEM
+// Morning → Afternoon → Evening → Night
+// =====================================================
     const themeButton = document.getElementById("theme-toggle");
 
     if (!themeButton) {
