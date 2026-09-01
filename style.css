@@ -1642,27 +1642,55 @@ body.light .bg-animation span {
         font-size: 2rem;
     }
 }
+
 /* =====================================================
-   FINAL 4-THEME OVERRIDE
+   4 THEME PORTFOLIO
    Morning → Afternoon → Evening → Night
 ===================================================== */
 
-/* Smooth theme transition */
+/* Smooth transition */
 body,
 nav,
 header,
 section,
 .card,
 .skill,
-.hero-stats,
+.stat,
 footer,
-.btn {
+.btn,
+h1,
+h2,
+h3,
+p,
+li {
     transition:
         background 0.8s ease,
         background-color 0.8s ease,
         color 0.5s ease,
         border-color 0.5s ease,
         box-shadow 0.5s ease;
+}
+
+
+/* =====================================================
+   IMPORTANT - FULL PAGE BACKGROUND
+===================================================== */
+
+body {
+    min-height: 100vh;
+    background: #0f172a;
+}
+
+
+/* Header must be transparent */
+header {
+    background: transparent !important;
+}
+
+
+/* Sections must be transparent */
+section {
+    background: transparent;
 }
 
 
@@ -1679,25 +1707,27 @@ body.morning {
         ),
         linear-gradient(
             180deg,
-            #fff8d6 0%,
-            #ffe9a8 50%,
-            #ffd66b 100%
+            #fff8d6,
+            #ffe9a8,
+            #ffd66b
         );
 
     color: #3b2a00;
 }
 
-body.morning header,
-body.morning section {
-    color: #3b2a00;
+body.morning nav {
+    background: rgba(255, 248, 214, 0.9);
+}
+
+body.morning nav a {
+    color: #4a3200;
 }
 
 body.morning h1,
 body.morning h2,
 body.morning h3,
 body.morning p,
-body.morning li,
-body.morning .hero-description {
+body.morning li {
     color: #3b2a00;
 }
 
@@ -1709,24 +1739,42 @@ body.morning .highlight {
     color: #d97706;
 }
 
-body.morning nav {
-    background: rgba(255, 248, 214, 0.82);
-    border-color: rgba(161, 98, 7, 0.18);
+body.morning .hero-description {
+    color: #5b4500;
 }
 
-body.morning nav a {
-    color: #4a3200;
+body.morning .section-title {
+    color: #b45309;
 }
 
 body.morning .card,
 body.morning .skill,
 body.morning .stat {
-    background: rgba(255, 255, 255, 0.38);
-    border-color: rgba(161, 98, 7, 0.18);
+    background: rgba(255, 255, 255, 0.45);
+    border-color: rgba(161, 98, 7, 0.2);
 }
 
 body.morning .skill i {
     color: #d97706;
+}
+
+body.morning .stat h2 {
+    color: #d97706;
+}
+
+body.morning .btn.primary {
+    background: #d97706;
+    color: white;
+}
+
+body.morning .btn.secondary {
+    color: #92400e;
+    border-color: #92400e;
+}
+
+body.morning footer {
+    background: rgba(255, 214, 107, 0.5);
+    color: #3b2a00;
 }
 
 
@@ -1743,11 +1791,19 @@ body.afternoon {
         ),
         linear-gradient(
             180deg,
-            #dff3ff 0%,
-            #b9dcf5 50%,
-            #a9c9df 100%
+            #dff3ff,
+            #b9dcf5,
+            #a9c9df
         );
 
+    color: #17324d;
+}
+
+body.afternoon nav {
+    background: rgba(224, 243, 255, 0.9);
+}
+
+body.afternoon nav a {
     color: #17324d;
 }
 
@@ -1755,8 +1811,7 @@ body.afternoon h1,
 body.afternoon h2,
 body.afternoon h3,
 body.afternoon p,
-body.afternoon li,
-body.afternoon .hero-description {
+body.afternoon li {
     color: #17324d;
 }
 
@@ -1768,24 +1823,42 @@ body.afternoon .highlight {
     color: #0284c7;
 }
 
-body.afternoon nav {
-    background: rgba(224, 243, 255, 0.82);
-    border-color: rgba(30, 64, 90, 0.18);
+body.afternoon .hero-description {
+    color: #31536f;
 }
 
-body.afternoon nav a {
-    color: #17324d;
+body.afternoon .section-title {
+    color: #0369a1;
 }
 
 body.afternoon .card,
 body.afternoon .skill,
 body.afternoon .stat {
-    background: rgba(255, 255, 255, 0.42);
-    border-color: rgba(30, 64, 90, 0.16);
+    background: rgba(255, 255, 255, 0.45);
+    border-color: rgba(30, 64, 90, 0.18);
 }
 
 body.afternoon .skill i {
     color: #0284c7;
+}
+
+body.afternoon .stat h2 {
+    color: #0284c7;
+}
+
+body.afternoon .btn.primary {
+    background: #0284c7;
+    color: white;
+}
+
+body.afternoon .btn.secondary {
+    color: #0369a1;
+    border-color: #0369a1;
+}
+
+body.afternoon footer {
+    background: rgba(169, 201, 223, 0.7);
+    color: #17324d;
 }
 
 
@@ -1802,11 +1875,19 @@ body.evening {
         ),
         linear-gradient(
             180deg,
-            #1e3a5f 0%,
-            #172554 50%,
-            #0f172a 100%
+            #1e3a5f,
+            #172554,
+            #0f172a
         );
 
+    color: #e5edff;
+}
+
+body.evening nav {
+    background: rgba(15, 23, 42, 0.9);
+}
+
+body.evening nav a {
     color: #e5edff;
 }
 
@@ -1814,8 +1895,7 @@ body.evening h1,
 body.evening h2,
 body.evening h3,
 body.evening p,
-body.evening li,
-body.evening .hero-description {
+body.evening li {
     color: #e5edff;
 }
 
@@ -1827,24 +1907,42 @@ body.evening .highlight {
     color: #60a5fa;
 }
 
-body.evening nav {
-    background: rgba(15, 23, 42, 0.78);
-    border-color: rgba(165, 180, 252, 0.18);
+body.evening .hero-description {
+    color: #cbd5e1;
 }
 
-body.evening nav a {
-    color: #e5edff;
+body.evening .section-title {
+    color: #93c5fd;
 }
 
 body.evening .card,
 body.evening .skill,
 body.evening .stat {
-    background: rgba(15, 23, 42, 0.48);
-    border-color: rgba(165, 180, 252, 0.16);
+    background: rgba(15, 23, 42, 0.55);
+    border-color: rgba(165, 180, 252, 0.2);
 }
 
 body.evening .skill i {
     color: #60a5fa;
+}
+
+body.evening .stat h2 {
+    color: #60a5fa;
+}
+
+body.evening .btn.primary {
+    background: #4f46e5;
+    color: white;
+}
+
+body.evening .btn.secondary {
+    color: #c7d2fe;
+    border-color: #c7d2fe;
+}
+
+body.evening footer {
+    background: rgba(15, 23, 42, 0.9);
+    color: #cbd5e1;
 }
 
 
@@ -1866,11 +1964,19 @@ body.night {
         ),
         linear-gradient(
             135deg,
-            #020617 0%,
-            #0f172a 50%,
-            #1e1b4b 100%
+            #020617,
+            #0f172a,
+            #1e1b4b
         );
 
+    color: #e5e7ff;
+}
+
+body.night nav {
+    background: rgba(2, 6, 23, 0.92);
+}
+
+body.night nav a {
     color: #e5e7ff;
 }
 
@@ -1878,8 +1984,7 @@ body.night h1,
 body.night h2,
 body.night h3,
 body.night p,
-body.night li,
-body.night .hero-description {
+body.night li {
     color: #e5e7ff;
 }
 
@@ -1891,55 +1996,97 @@ body.night .highlight {
     color: #60a5fa;
 }
 
-body.night nav {
-    background: rgba(2, 6, 23, 0.82);
-    border-color: rgba(196, 181, 253, 0.18);
+body.night .hero-description {
+    color: #cbd5e1;
 }
 
-body.night nav a {
-    color: #e5e7ff;
+body.night .section-title {
+    color: #a78bfa;
 }
 
 body.night .card,
 body.night .skill,
 body.night .stat {
-    background: rgba(15, 23, 42, 0.48);
-    border-color: rgba(196, 181, 253, 0.16);
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(196, 181, 253, 0.2);
 }
 
 body.night .skill i {
     color: #60a5fa;
 }
 
+body.night .stat h2 {
+    color: #60a5fa;
+}
+
+body.night .btn.primary {
+    background: #4f46e5;
+    color: white;
+}
+
+body.night .btn.secondary {
+    color: #c4b5fd;
+    border-color: #c4b5fd;
+}
+
+body.night footer {
+    background: rgba(2, 6, 23, 0.95);
+    color: #cbd5e1;
+}
+
 
 /* =====================================================
-   👤 PROFILE PICTURE — THEME GLOW
+   PROFILE IMAGE GLOW
 ===================================================== */
 
 body.morning .profile-pic {
-    box-shadow:
-        0 0 25px rgba(245, 158, 11, 0.45);
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.55);
 }
 
 body.afternoon .profile-pic {
-    box-shadow:
-        0 0 25px rgba(14, 165, 233, 0.40);
+    box-shadow: 0 0 30px rgba(14, 165, 233, 0.55);
 }
 
 body.evening .profile-pic {
-    box-shadow:
-        0 0 30px rgba(99, 102, 241, 0.50);
+    box-shadow: 0 0 35px rgba(99, 102, 241, 0.65);
 }
 
 body.night .profile-pic {
     box-shadow:
-        0 0 35px rgba(139, 92, 246, 0.65),
-        0 0 75px rgba(59, 130, 246, 0.22);
+        0 0 35px rgba(139, 92, 246, 0.75),
+        0 0 75px rgba(59, 130, 246, 0.3);
 }
 
 
 /* =====================================================
-   🌅 MORNING — NO FLOATING CIRCLES
+   THEME BUTTON
+===================================================== */
+
+#theme-toggle {
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    transition: 0.3s ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.12);
+}
+
+
+/* =====================================================
+   🌧️ EVENING RAIN
 ===================================================== */
 
 body.morning .bg-animation > span,
@@ -1947,14 +2094,10 @@ body.afternoon .bg-animation > span {
     display: none;
 }
 
-
-/* =====================================================
-   🌧️ EVENING — RAIN ATMOSPHERE
-===================================================== */
-
 body.evening .bg-animation > span {
     width: 2px;
     height: 80px;
+
     border-radius: 0;
 
     background: linear-gradient(
@@ -1965,27 +2108,8 @@ body.evening .bg-animation > span {
     animation: rainFall 1.2s linear infinite;
 }
 
-body.evening .bg-animation > span:nth-child(1) {
-    left: 20%;
-    animation-delay: 0.2s;
-}
-
-body.evening .bg-animation > span:nth-child(2) {
-    left: 45%;
-    animation-delay: 0.7s;
-}
-
-body.evening .bg-animation > span:nth-child(3) {
-    left: 70%;
-    animation-delay: 0.4s;
-}
-
-body.evening .bg-animation > span:nth-child(4) {
-    left: 90%;
-    animation-delay: 1s;
-}
-
 @keyframes rainFall {
+
     0% {
         transform: translateY(-120px);
         opacity: 0;
@@ -2003,11 +2127,12 @@ body.evening .bg-animation > span:nth-child(4) {
 
 
 /* =====================================================
-   🌌 NIGHT — STAR FIELD
+   🌌 NIGHT STARS
 ===================================================== */
 
 body.night .bg-animation > span {
     background: white;
+
     border-radius: 50%;
 
     box-shadow:
@@ -2017,35 +2142,8 @@ body.night .bg-animation > span {
     animation: starTwinkle 3.5s ease-in-out infinite;
 }
 
-body.night .bg-animation > span:nth-child(1) {
-    width: 3px;
-    height: 3px;
-    left: 15%;
-    top: 18%;
-}
-
-body.night .bg-animation > span:nth-child(2) {
-    width: 2px;
-    height: 2px;
-    left: 40%;
-    top: 30%;
-}
-
-body.night .bg-animation > span:nth-child(3) {
-    width: 4px;
-    height: 4px;
-    left: 72%;
-    top: 16%;
-}
-
-body.night .bg-animation > span:nth-child(4) {
-    width: 2px;
-    height: 2px;
-    left: 85%;
-    top: 60%;
-}
-
 @keyframes starTwinkle {
+
     0%,
     100% {
         opacity: 0.25;
@@ -2060,147 +2158,20 @@ body.night .bg-animation > span:nth-child(4) {
 
 
 /* =====================================================
-   ☄️ SHOOTING STARS — NIGHT ONLY
+   MOBILE
 ===================================================== */
 
-body:not(.night) .shooting-stars {
-    display: none;
-}
+@media (max-width: 600px) {
 
-body.night .shooting-stars {
-    display: block;
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-body.night .shooting-stars span {
-    position: absolute;
-
-    width: 120px;
-    height: 2px;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.95)
-    );
-
-    border-radius: 50%;
-
-    transform: rotate(-35deg);
-
-    animation: shootingStar 7s linear infinite;
-
-    opacity: 0;
-}
-
-body.night .shooting-stars span:nth-child(1) {
-    top: 18%;
-    left: 70%;
-    animation-delay: 1s;
-}
-
-body.night .shooting-stars span:nth-child(2) {
-    top: 38%;
-    left: 55%;
-    animation-delay: 4s;
-}
-
-body.night .shooting-stars span:nth-child(3) {
-    top: 12%;
-    left: 85%;
-    animation-delay: 7s;
-}
-
-@keyframes shootingStar {
-    0% {
-        transform: translate(0, 0) rotate(-35deg);
-        opacity: 0;
+    #theme-toggle {
+        width: 38px;
+        height: 38px;
+        font-size: 17px;
     }
 
-    5% {
-        opacity: 1;
+    .profile-pic {
+        width: 150px;
+        height: 150px;
     }
+} 
 
-    18% {
-        transform: translate(-300px, 180px) rotate(-35deg);
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-
-/* =====================================================
-   BUTTON THEME
-===================================================== */
-
-body.morning .btn.primary {
-    background: #d97706;
-    color: white;
-}
-
-body.afternoon .btn.primary {
-    background: #0284c7;
-    color: white;
-}
-
-body.evening .btn.primary,
-body.night .btn.primary {
-    background: #4f46e5;
-    color: white;
-}
-
-body.morning .btn.secondary,
-body.afternoon .btn.secondary {
-    color: #17324d;
-    border-color: currentColor;
-}
-
-body.evening .btn.secondary,
-body.night .btn.secondary {
-    color: #e5e7ff;
-    border-color: currentColor;
-}
-
-
-/* =====================================================
-   THEME BUTTON
-===================================================== */
-
-#theme-toggle {
-    transition:
-        transform 0.3s ease,
-        background 0.5s ease;
-}
-
-#theme-toggle:hover {
-    transform: scale(1.12);
-}
-/* =================================
-   SKILLS SQUARE FRAME VISIBILITY
-================================= */
-
-/* 🌅 Morning */
-body.morning .skill {
-    border: 2px solid rgba(120, 85, 20, 0.35);
-}
-
-/* ☁️ Afternoon */
-body.afternoon .skill {
-    border: 2px solid rgba(40, 80, 120, 0.35);
-}
-
-/* 🌧️ Evening */
-body.evening .skill {
-    border: 2px solid rgba(165, 180, 252, 0.30);
-}
-
-/* 🌌 Night */
-body.night .skill {
-    border: 2px solid rgba(196, 181, 253, 0.30);
-}
