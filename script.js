@@ -325,52 +325,45 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 document.body.classList.add(selectedTheme.name);
-    // =========================================================
-// 4 THEME PORTFOLIO
+  // =====================================================
+// 4 THEME SYSTEM
 // Morning → Afternoon → Evening → Night
-// =========================================================
+// =====================================================
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
     const themeButton = document.getElementById("theme-toggle");
 
-    // Check whether the button exists
     if (!themeButton) {
-        console.error("Theme button not found!");
+        console.error("ERROR: #theme-toggle button not found");
         return;
     }
 
-    // Available themes
     const themes = [
         {
-            name: "morning",
+            className: "morning",
             icon: "🌅"
         },
         {
-            name: "afternoon",
-            icon: "☁️"
+            className: "afternoon",
+            icon: "☀️"
         },
         {
-            name: "evening",
+            className: "evening",
             icon: "🌧️"
         },
         {
-            name: "night",
+            className: "night",
             icon: "🌌"
         }
     ];
 
-    // Start with Morning
-    let currentTheme = 0;
+    let themeIndex = 0;
 
 
-    // =====================================================
-    // APPLY THEME
-    // =====================================================
+    function changeTheme() {
 
-    function applyTheme() {
-
-        // Remove all old theme classes
+        // Remove previous themes
         document.body.classList.remove(
             "morning",
             "afternoon",
@@ -378,46 +371,36 @@ document.addEventListener("DOMContentLoaded", () => {
             "night"
         );
 
-        // Get current theme
-        const selectedTheme = themes[currentTheme];
-
-        // Add new theme to BODY
-        document.body.classList.add(selectedTheme.name);
+        // Add current theme
+        document.body.classList.add(
+            themes[themeIndex].className
+        );
 
         // Change button icon
-        themeButton.textContent = selectedTheme.icon;
+        themeButton.innerHTML =
+            themes[themeIndex].icon;
 
-        // Change button tooltip
-        themeButton.title =
-            "Current Theme: " +
-            selectedTheme.name.charAt(0).toUpperCase() +
-            selectedTheme.name.slice(1);
+        console.log(
+            "Current theme:",
+            themes[themeIndex].className
+        );
     }
 
 
-    // =====================================================
-    // INITIAL THEME
-    // =====================================================
-
-    applyTheme();
+    // First theme
+    changeTheme();
 
 
-    // =====================================================
-    // CHANGE THEME
-    // =====================================================
+    // Button click
+    themeButton.addEventListener("click", function () {
 
-    themeButton.addEventListener("click", () => {
+        themeIndex++;
 
-        // Move to next theme
-        currentTheme++;
-
-        // Go back to Morning after Night
-        if (currentTheme >= themes.length) {
-            currentTheme = 0;
+        if (themeIndex >= themes.length) {
+            themeIndex = 0;
         }
 
-        // Apply selected theme
-        applyTheme();
+        changeTheme();
     });
 
 });
