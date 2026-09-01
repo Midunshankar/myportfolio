@@ -324,10 +324,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-// ========================================
-// FULL PORTFOLIO THEME TOGGLE
-// ========================================
-
 const themeToggle = document.getElementById("theme-toggle");
 
 const themes = [
