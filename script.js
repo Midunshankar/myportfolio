@@ -324,64 +324,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
-// =====================================================
-// 4 THEME SYSTEM
+document.body.classList.add(selectedTheme.name);
+    // =========================================================
+// 4 THEME PORTFOLIO
 // Morning → Afternoon → Evening → Night
-// =====================================================
+// =========================================================
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    const toggle = document.getElementById("theme-toggle");
+    const themeButton = document.getElementById("theme-toggle");
 
-    // Stop if button doesn't exist
-    if (!toggle) {
-        console.error("Theme button #theme-toggle not found!");
+    // Check whether the button exists
+    if (!themeButton) {
+        console.error("Theme button not found!");
         return;
     }
 
-
-    // =================================================
-    // THEMES
-    // =================================================
-
+    // Available themes
     const themes = [
         {
             name: "morning",
             icon: "🌅"
         },
-
         {
             name: "afternoon",
             icon: "☁️"
         },
-
         {
             name: "evening",
             icon: "🌧️"
         },
-
         {
             name: "night",
             icon: "🌌"
         }
     ];
 
-
-    // =================================================
-    // CURRENT THEME
-    // =================================================
-
+    // Start with Morning
     let currentTheme = 0;
 
 
-    // =================================================
+    // =====================================================
     // APPLY THEME
-    // =================================================
+    // =====================================================
 
     function applyTheme() {
 
-        // Remove all old themes
+        // Remove all old theme classes
         document.body.classList.remove(
             "morning",
             "afternoon",
@@ -389,53 +378,46 @@ document.addEventListener("DOMContentLoaded", function () {
             "night"
         );
 
-
         // Get current theme
-        const theme = themes[currentTheme];
+        const selectedTheme = themes[currentTheme];
 
+        // Add new theme to BODY
+        document.body.classList.add(selectedTheme.name);
 
-        // Add theme to BODY
-        document.body.classList.add(theme.name);
+        // Change button icon
+        themeButton.textContent = selectedTheme.icon;
 
-
-        // Change theme button icon
-        toggle.textContent = theme.icon;
-
-
-        // Change tooltip
-        toggle.title = "Current Theme: " + theme.name;
-
-
-        console.log("Theme changed to:", theme.name);
+        // Change button tooltip
+        themeButton.title =
+            "Current Theme: " +
+            selectedTheme.name.charAt(0).toUpperCase() +
+            selectedTheme.name.slice(1);
     }
 
 
-    // =================================================
-    // FIRST THEME
-    // =================================================
+    // =====================================================
+    // INITIAL THEME
+    // =====================================================
 
     applyTheme();
 
 
-    // =================================================
-    // THEME BUTTON CLICK
-    // =================================================
+    // =====================================================
+    // CHANGE THEME
+    // =====================================================
 
-    toggle.addEventListener("click", function () {
+    themeButton.addEventListener("click", () => {
 
         // Move to next theme
         currentTheme++;
-
 
         // Go back to Morning after Night
         if (currentTheme >= themes.length) {
             currentTheme = 0;
         }
 
-
-        // Apply new theme
+        // Apply selected theme
         applyTheme();
-
     });
 
 });
