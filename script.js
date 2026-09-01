@@ -1,9 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================================
-       MOBILE NAVIGATION
-    ========================================= */
-
+    // MOBILE MENU
     const menuBtn = document.querySelector(".menu-btn");
     const navLinks = document.querySelector(".nav-links");
 
@@ -15,20 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
             menuBtn.classList.toggle("active");
 
             if (navLinks.classList.contains("active")) {
-
                 menuBtn.textContent = "✕";
                 menuBtn.setAttribute("aria-label", "Close Menu");
-
             } else {
-
                 menuBtn.textContent = "☰";
                 menuBtn.setAttribute("aria-label", "Open Menu");
-
             }
 
         });
 
-        // Close mobile menu after clicking a link
         document.querySelectorAll(".nav-links a").forEach(link => {
 
             link.addEventListener("click", () => {
@@ -46,10 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================
-       TYPING ANIMATION
-    ========================================= */
-
+    // TYPING ANIMATION
     const typingElement = document.querySelector(".typing");
 
     if (typingElement) {
@@ -70,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const currentWord = words[wordIndex];
 
-            // Typing
             if (!deleting) {
 
                 typingElement.textContent =
@@ -78,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 charIndex++;
 
-                // Word completed
                 if (charIndex === currentWord.length) {
 
                     deleting = true;
@@ -88,17 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
-            }
-
-            // Deleting
-            else {
+            } else {
 
                 typingElement.textContent =
                     currentWord.substring(0, charIndex - 1);
 
                 charIndex--;
 
-                // Next word
                 if (charIndex === 0) {
 
                     deleting = false;
@@ -118,10 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================
-       SCROLL REVEAL ANIMATION
-    ========================================= */
-
+    // SCROLL REVEAL
     const revealElements = document.querySelectorAll(
         ".section-title, " +
         ".about-content, " +
@@ -158,15 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =========================================
-       ACTIVE NAVIGATION
-    ========================================= */
-
+    // ACTIVE NAVIGATION
     const sections = document.querySelectorAll("section");
-
-    const navItems = document.querySelectorAll(
-        ".nav-links a"
-    );
+    const navItems = document.querySelectorAll(".nav-links a");
 
     function updateActiveNavigation() {
 
@@ -174,20 +148,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         sections.forEach(section => {
 
-            const sectionTop =
-                section.offsetTop - 150;
-
-            const sectionHeight =
-                section.offsetHeight;
+            const sectionTop = section.offsetTop - 150;
+            const sectionHeight = section.offsetHeight;
 
             if (
                 window.scrollY >= sectionTop &&
                 window.scrollY < sectionTop + sectionHeight
             ) {
 
-                currentSection =
-                    section.getAttribute("id");
-
+                currentSection = section.getAttribute("id");
             }
 
         });
@@ -216,10 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateActiveNavigation();
 
 
-    /* =========================================
-       NAVBAR SHADOW ON SCROLL
-    ========================================= */
-
+    // NAVBAR SHADOW
     const header = document.querySelector("header");
 
     function updateNavbar() {
@@ -227,11 +193,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!header) return;
 
         if (window.scrollY > 50) {
-
             header.classList.add("scrolled");
-
         } else {
-
             header.classList.remove("scrolled");
         }
 
@@ -245,13 +208,9 @@ document.addEventListener("DOMContentLoaded", () => {
     updateNavbar();
 
 
-    /* =========================================
-       CONTACT FORM
-    ========================================= */
-
-    const contactForm = document.querySelector(
-        ".contact-form"
-    );
+    // CONTACT FORM
+    const contactForm =
+        document.querySelector(".contact-form");
 
     if (contactForm) {
 
@@ -276,8 +235,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         'textarea[name="message"]'
                     )?.value.trim();
 
-
-                // Empty field check
                 if (!name || !email || !message) {
 
                     alert(
@@ -287,8 +244,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
-
-                // Email validation
                 const emailPattern =
                     /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -301,15 +256,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
-
-                // Success message
                 alert(
-                    `Thank you, ${name}! ` +
-                    `Your message has been received.`
+                    `Thank you, ${name}! Your message has been received.`
                 );
 
-
-                // Clear form
                 contactForm.reset();
 
             }
@@ -318,10 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================
-       CURRENT YEAR
-    ========================================= */
-
+    // CURRENT YEAR
     const yearElement =
         document.querySelector("#current-year");
 
@@ -333,44 +280,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================
-       PROJECT LINKS
-    ========================================= */
-
+    // PROJECT LINKS
     const projectLinks =
-        document.querySelectorAll(
-            ".project-card a"
-        );
+        document.querySelectorAll(".project-card a");
 
     projectLinks.forEach(link => {
 
-        link.addEventListener(
-            "click",
-            event => {
+        link.addEventListener("click", event => {
 
-                const href =
-                    link.getAttribute("href");
+            const href = link.getAttribute("href");
 
-                if (href === "#" || !href) {
+            if (href === "#" || !href) {
 
-                    event.preventDefault();
+                event.preventDefault();
 
-                    alert(
-                        "Project link will be added soon."
-                    );
-
-                }
-
+                alert(
+                    "Project link will be added soon."
+                );
             }
-        );
+
+        });
 
     });
 
 
-    /* =========================================
-       PROFILE IMAGE ERROR HANDLING
-    ========================================= */
-
+    // PROFILE IMAGE ERROR
     const profileImage =
         document.querySelector(".profile-img");
 
@@ -389,4 +323,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-}); // ← IMPORTANT: closes DOMContentLoaded
+});
