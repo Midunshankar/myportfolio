@@ -324,7 +324,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-document.body.classList.add(selectedTheme.name);
   // =====================================================
 // 4 THEME SYSTEM
 // Morning → Afternoon → Evening → Night
