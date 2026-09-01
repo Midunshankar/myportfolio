@@ -324,10 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-  // =====================================================
-// 4 THEME SYSTEM
-// Morning → Afternoon → Evening → Night
-// =====================================================
+ 
 
 document.addEventListener("DOMContentLoaded", function () {
 
