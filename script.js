@@ -1,171 +1,367 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Mobile menu
-  const menuButton = document.querySelector(".menu-btn");
-  const navLinks = document.querySelector(".nav-links");
 
-  const closeMenu = () => {
-    navLinks.classList.remove("active");
-    menuButton.textContent = "☰";
-    menuButton.setAttribute("aria-label", "Open menu");
-    menuButton.setAttribute("aria-expanded", "false");
-  };
+    // ========================================
+    // MOBILE MENU
+    // ========================================
 
-  menuButton.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("active");
+    const menuButton = document.querySelector(".menu-btn");
+    const navLinks = document.querySelector(".nav-links");
 
-    menuButton.textContent = isOpen ? "✕" : "☰";
-    menuButton.setAttribute(
-      "aria-label",
-      isOpen ? "Close menu" : "Open menu"
-    );
-    menuButton.setAttribute("aria-expanded", String(isOpen));
-  });
+    if (menuButton && navLinks) {
 
-  document.querySelectorAll(".nav-links a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
+        const closeMenu = () => {
+            navLinks.classList.remove("active");
 
-  // Typing animation
-  const words = [
-    "B.Com IT Student",
-    "Aspiring IT Professional",
-    "Web Developer",
-    "Creative Learner",
-    "AI Enthusiast"
-  ];
+            menuButton.textContent = "☰";
+            menuButton.setAttribute("aria-label", "Open menu");
+            menuButton.setAttribute("aria-expanded", "false");
+        };
 
-  const typingElement = document.querySelector(".typing");
+        menuButton.addEventListener("click", () => {
 
-  let wordIndex = 0;
-  let characterIndex = 0;
-  let deleting = false;
+            const isOpen = navLinks.classList.toggle("active");
 
-  function type() {
-    const word = words[wordIndex];
+            menuButton.textContent = isOpen ? "✕" : "☰";
 
-    characterIndex += deleting ? -1 : 1;
-    typingElement.textContent = word.slice(0, characterIndex);
+            menuButton.setAttribute(
+                "aria-label",
+                isOpen ? "Close menu" : "Open menu"
+            );
 
-    if (!deleting && characterIndex === word.length) {
-      deleting = true;
-      setTimeout(type, 1400);
-      return;
+            menuButton.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+        });
+
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+
+            link.addEventListener("click", closeMenu);
+
+        });
     }
 
-    if (deleting && characterIndex === 0) {
-      deleting = false;
-      wordIndex = (wordIndex + 1) % words.length;
-    }
 
-    setTimeout(type, deleting ? 55 : 95);
-  }
+    // ========================================
+    // TYPING ANIMATION
+    // ========================================
 
-  type();
+    const words = [
+        "B.Com IT Student",
+        "Aspiring IT Professional",
+        "Web Developer",
+        "Creative Learner",
+        "AI Enthusiast"
+    ];
 
-  // Theme switcher
-  const themeButton = document.querySelector("#theme-toggle");
+    const typingElement = document.querySelector(".typing");
 
-  const themes = [
-    { name: "morning", icon: "🌅" },
-    { name: "afternoon", icon: "☀️" },
-    { name: "evening", icon: "🌧️" },
-    { name: "night", icon: "🌌" }
-  ];
+    if (typingElement) {
 
-  let themeIndex = 0;
+        let wordIndex = 0;
+        let characterIndex = 0;
+        let deleting = false;
 
-  function applyTheme() {
-    document.body.classList.remove(...themes.map((theme) => theme.name));
-    document.body.classList.add(themes[themeIndex].name);
-    themeButton.textContent = themes[themeIndex].icon;
-  }
+        function type() {
 
-  themeButton.addEventListener("click", () => {
-    themeIndex = (themeIndex + 1) % themes.length;
-    applyTheme();
-  });
+            const word = words[wordIndex];
 
-  // Scroll reveal animation
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          observer.unobserve(entry.target);
+            if (deleting) {
+                characterIndex--;
+            } else {
+                characterIndex++;
+            }
+
+            typingElement.textContent =
+                word.slice(0, characterIndex);
+
+            // Finished typing
+            if (!deleting && characterIndex === word.length) {
+
+                deleting = true;
+
+                setTimeout(type, 1400);
+
+                return;
+            }
+
+            // Finished deleting
+            if (deleting && characterIndex === 0) {
+
+                deleting = false;
+
+                wordIndex =
+                    (wordIndex + 1) % words.length;
+            }
+
+            setTimeout(
+                type,
+                deleting ? 55 : 95
+            );
         }
-      });
-    },
-    { threshold: 0.15 }
-  );
 
-  document
-    .querySelectorAll(
-      ".section-title, .about-content, .skill-card, .project-card, .contact-container"
-    )
-    .forEach((element) => {
-      element.classList.add("reveal");
-      observer.observe(element);
-    });
+        type();
+    }
 
-  // Navbar shadow and active link
-  const header = document.querySelector("header");
 
-  function updateNavigation() {
-    header.classList.toggle("scrolled", window.scrollY > 50);
+    // ========================================
+    // THEME SWITCHER
+    // ========================================
 
-    let currentSection = "home";
+    const themeButton =
+        document.querySelector("#theme-toggle");
 
-    document.querySelectorAll("main section").forEach((section) => {
-      if (window.scrollY >= section.offsetTop - 160) {
-        currentSection = section.id;
-      }
-    });
+    const themes = [
+        {
+            name: "morning",
+            icon: "🌅"
+        },
+        {
+            name: "afternoon",
+            icon: "☀️"
+        },
+        {
+            name: "evening",
+            icon: "🌧️"
+        },
+        {
+            name: "night",
+            icon: "🌌"
+        }
+    ];
 
-    document.querySelectorAll(".nav-links a").forEach((link) => {
-      link.classList.toggle(
-        "active",
-        link.hash === `#${currentSection}`
-      );
-    });
-  }
+    let themeIndex = 0;
 
-  window.addEventListener("scroll", updateNavigation, {
-    passive: true
-  });
+    if (themeButton) {
 
-  updateNavigation();
+        function applyTheme() {
 
-  // Contact form
-  document
-    .querySelector(".contact-form")
-    .addEventListener("submit", (event) => {
-      event.preventDefault();
+            document.body.classList.remove(
+                ...themes.map(theme => theme.name)
+            );
 
-      const form = event.currentTarget;
+            document.body.classList.add(
+                themes[themeIndex].name
+            );
 
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
+            themeButton.textContent =
+                themes[themeIndex].icon;
+        }
 
-      alert(
-        `Thank you, ${form.elements.name.value.trim()}! Your message has been received.`
-      );
+        themeButton.addEventListener("click", () => {
 
-      form.reset();
-    });
+            themeIndex =
+                (themeIndex + 1) % themes.length;
 
-  // Current year
-  document.querySelector("#current-year").textContent =
-    new Date().getFullYear();
+            applyTheme();
+        });
 
-  // Temporary project links
-  document
-    .querySelectorAll(".project-card a[href='#']")
-    .forEach((link) => {
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        alert("Project link will be added soon.");
-      });
-    });
+        applyTheme();
+    }
+
+
+    // ========================================
+    // SCROLL REVEAL
+    // ========================================
+
+    const revealElements = document.querySelectorAll(
+        ".section-title, .about-content, .skill-card, .project-card, .contact-container"
+    );
+
+    if ("IntersectionObserver" in window) {
+
+        const observer = new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("show");
+
+                        observer.unobserve(entry.target);
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+        revealElements.forEach((element) => {
+
+            element.classList.add("reveal");
+
+            observer.observe(element);
+
+        });
+
+    } else {
+
+        revealElements.forEach((element) => {
+
+            element.classList.add("show");
+
+        });
+    }
+
+
+    // ========================================
+    // NAVBAR SHADOW + ACTIVE LINK
+    // ========================================
+
+    const header = document.querySelector("header");
+
+    function updateNavigation() {
+
+        if (header) {
+
+            header.classList.toggle(
+                "scrolled",
+                window.scrollY > 50
+            );
+        }
+
+        let currentSection = "home";
+
+        document.querySelectorAll("main section").forEach(
+            (section) => {
+
+                if (
+                    window.scrollY >=
+                    section.offsetTop - 160
+                ) {
+
+                    currentSection = section.id;
+                }
+
+            }
+        );
+
+        document.querySelectorAll(".nav-links a").forEach(
+            (link) => {
+
+                link.classList.toggle(
+                    "active",
+                    link.hash === `#${currentSection}`
+                );
+
+            }
+        );
+    }
+
+    window.addEventListener(
+        "scroll",
+        updateNavigation,
+        {
+            passive: true
+        }
+    );
+
+    updateNavigation();
+
+
+    // ========================================
+    // CONTACT FORM
+    // ========================================
+
+    const contactForm =
+        document.querySelector(".contact-form");
+
+    if (contactForm) {
+
+        contactForm.addEventListener(
+            "submit",
+            (event) => {
+
+                event.preventDefault();
+
+                if (!contactForm.checkValidity()) {
+
+                    contactForm.reportValidity();
+
+                    return;
+                }
+
+                const name =
+                    contactForm.elements.name.value.trim();
+
+                alert(
+                    `Thank you, ${name}! Your message has been received.`
+                );
+
+                contactForm.reset();
+            }
+        );
+    }
+
+
+    // ========================================
+    // CURRENT YEAR
+    // ========================================
+
+    const currentYear =
+        document.querySelector("#current-year");
+
+    if (currentYear) {
+
+        currentYear.textContent =
+            new Date().getFullYear();
+    }
+
+
+    // ========================================
+    // PROJECT LINKS
+    // ========================================
+
+    document
+        .querySelectorAll(".project-card a[href='#']")
+        .forEach((link) => {
+
+            link.addEventListener(
+                "click",
+                (event) => {
+
+                    event.preventDefault();
+
+                    alert(
+                        "Project link will be added soon."
+                    );
+                }
+            );
+        });
+
+
+    // ========================================
+    // RESUME DOWNLOAD
+    // ========================================
+
+    const resumeButton =
+        document.querySelector("#resume-download");
+
+    if (resumeButton) {
+
+        resumeButton.addEventListener(
+            "click",
+            () => {
+
+                const link =
+                    document.createElement("a");
+
+                link.href = "resume.pdf";
+
+                link.download =
+                    "Midun-Shankar-K-Resume.pdf";
+
+                document.body.appendChild(link);
+
+                link.click();
+
+                document.body.removeChild(link);
+            }
+        );
+    }
+
 });
