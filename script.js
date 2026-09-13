@@ -365,3 +365,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+/* ================================
+   SHOOTING STAR CONTROL
+================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const shootingStars = document.querySelector(".shooting-stars");
+
+    if (!shootingStars) return;
+
+    function updateShootingStars() {
+        const isNight = document.body.classList.contains("night");
+
+        if (isNight) {
+            shootingStars.style.display = "block";
+        } else {
+            shootingStars.style.display = "none";
+        }
+    }
+
+    // Check when page loads
+    updateShootingStars();
+
+    // Check whenever theme changes
+    const observer = new MutationObserver(() => {
+        updateShootingStars();
+    });
+
+    observer.observe(document.body, {
+        attributes: true,
+        attributeFilter: ["class"]
+    });
+
+});
