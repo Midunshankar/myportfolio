@@ -1,241 +1,448 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Midun Shankar K">
-  <title>Midun Shankar K | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Portfolio of Midun Shankar K">
+
+    <title>Midun Shankar K | Portfolio</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="morning">
-  <div class="bg-animation" aria-hidden="true">
-    <span></span><span></span><span></span><span></span>
-    <div class="shooting-stars">
-      <span></span><span></span><span></span>
+
+    <!-- Background Animation -->
+    <div class="bg-animation" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <div class="shooting-stars">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
-  </div>
 
-  <header>
-    <nav class="navbar" aria-label="Main navigation">
-      <a class="logo" href="#home">Midun Shankar K</a>
+    <!-- Header -->
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
 
-      <button
-        class="menu-btn"
-        type="button"
-        aria-label="Open menu"
-        aria-expanded="false"
-        aria-controls="main-menu">
-        ☰
-      </button>
-
-      <ul class="nav-links" id="main-menu">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-
-      <button
-        id="theme-toggle"
-        type="button"
-        title="Change colour theme"
-        aria-label="Change colour theme">
-        🌅
-      </button>
-    </nav>
-  </header>
-
-  <main>
-    <section id="home" class="hero">
-      <div class="hero-container">
-        <div class="hero-content">
-          <h1>Hello, I’m <span>Midun Shankar K</span></h1>
-
-          <h2>
-            I am a
-            <span class="typing" aria-live="polite"></span>
-          </h2>
-
-          <p>
-            I am a passionate student interested in programming,
-            web development, and AI technologies.
-          </p>
-
-          <a href="#about" class="btn">About Me</a>
-          <a href="#contact" class="btn btn-outline">Contact Me</a>
-        </div>
-
-        <div class="profile-container">
-          <div class="profile-circle">
-            <img
-              src="profile.jpg"
-              alt="Midun Shankar K"
-              class="profile-img">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container">
-        <div class="section-title">
-          <h2>About Me</h2>
-          <p>Get to know me</p>
-        </div>
-
-        <div class="about-content">
-          <div class="about-text">
-            <h3>Who Am I?</h3>
-
-            <p>
-              I am a B.Com IT student with an interest in technology,
-              programming, web development, and artificial intelligence.
-            </p>
-
-            <p>
-              I enjoy learning new technologies and developing creative
-              projects that improve my technical and professional skills.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="container">
-        <div class="section-title">
-          <h2>My Skills</h2>
-          <p>Technologies I am learning</p>
-        </div>
-
-        <div class="skills-container">
-          <article class="skill-card">
-            <h3>HTML</h3>
-            <p>Creating structured and responsive web pages.</p>
-          </article>
-
-          <article class="skill-card">
-            <h3>CSS</h3>
-            <p>Designing modern and responsive websites.</p>
-          </article>
-
-          <article class="skill-card">
-            <h3>JavaScript</h3>
-            <p>Adding interactive features to websites.</p>
-          </article>
-
-          <article class="skill-card">
-            <h3>Python</h3>
-            <p>Developing programs and solving problems.</p>
-          </article>
-
-          <article class="skill-card">
-            <h3>Git &amp; GitHub</h3>
-            <p>Managing and sharing projects using GitHub.</p>
-          </article>
-
-          <article class="skill-card">
-            <h3>AI Technologies</h3>
-            <p>Exploring artificial intelligence and modern technologies.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
-        <div class="section-title">
-          <h2>My Projects</h2>
-          <p>Some of my work</p>
-        </div>
-
-        <div class="projects-container">
-          <article class="project-card">
-            <h3>Portfolio Website</h3>
-            <p>
-              A professional personal portfolio website created using
-              HTML, CSS, and JavaScript.
-            </p>
-            <a href="#">View Project →</a>
-          </article>
-
-          <article class="project-card">
-            <h3>Student Management System</h3>
-            <p>
-              A simple Python project designed to manage student records.
-            </p>
-            <a href="#">View Project →</a>
-          </article>
-
-          <article class="project-card">
-            <h3>Web Development Project</h3>
-            <p>
-              A responsive website project created using HTML and CSS.
-            </p>
-            <a href="#">View Project →</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="section-title">
-          <h2>Contact Me</h2>
-          <p>Let’s connect</p>
-        </div>
-
-        <div class="contact-container">
-          <form class="contact-form">
-            <label>
-              <span>Your name</span>
-              <input type="text" name="name" required>
-            </label>
-
-            <label>
-              <span>Your email</span>
-              <input type="email" name="email" required>
-            </label>
-
-            <label>
-              <span>Your message</span>
-              <textarea name="message" required></textarea>
-            </label>
-
-            <button type="submit" class="btn">Send Message</button>
-          </form>
-
-          <div class="social-links">
-            <a
-              href="https://www.linkedin.com/in/midun-shankar-k-46974031a"
-              target="_blank"
-              rel="noopener noreferrer">
-              LinkedIn
+            <a class="logo" href="#home">
+                Midun Shankar K
             </a>
 
-            <a
-              href="https://github.com/Midunshankar"
-              target="_blank"
-              rel="noopener noreferrer">
-              GitHub
-            </a>
+            <!-- Mobile Menu Button -->
+            <button
+                class="menu-btn"
+                type="button"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="main-menu">
+                ☰
+            </button>
 
-            <a href="mailto:midunshankar2007@gmail.com">Email</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+            <!-- Navigation -->
+            <ul class="nav-links" id="main-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
 
-  <footer>
-    <p>
-      © <span id="current-year"></span>
-      Midun Shankar K. All Rights Reserved.
-    </p>
-  </footer>
+            <!-- Theme Button -->
+            <button
+                id="theme-toggle"
+                type="button"
+                title="Change colour theme"
+                aria-label="Change colour theme">
+                🌅
+            </button>
 
-  <script src="script.js"></script>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- HOME -->
+        <section id="home" class="hero">
+
+            <div class="hero-container">
+
+                <div class="hero-content">
+
+                    <h1>
+                        Hello, I’m
+                        <span>Midun Shankar K</span>
+                    </h1>
+
+                    <h2>
+                        I am a
+                        <span class="typing" aria-live="polite"></span>
+                    </h2>
+
+                    <p>
+                        I am a passionate student interested in programming,
+                        web development, and AI technologies.
+                    </p>
+
+                    <a href="#about" class="btn">
+                        About Me
+                    </a>
+
+                    <a href="#contact" class="btn btn-outline">
+                        Contact Me
+                    </a>
+
+                    <!-- Resume Download -->
+                    <a
+                        href="resume.pdf"
+                        class="btn"
+                        download="Midun-Shankar-K-Resume.pdf">
+                        📄 Download Resume
+                    </a>
+
+                </div>
+
+                <!-- Profile Image -->
+                <div class="profile-container">
+
+                    <div class="profile-circle">
+
+                        <img
+                            src="profile.jpg"
+                            alt="Profile photo"
+                            class="profile-img">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+        <section id="about">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <h2>About Me</h2>
+
+                    <p>
+                        Get to know me
+                    </p>
+
+                </div>
+
+
+                <div class="about-content">
+
+                    <div class="about-text">
+
+                        <h3>Who Am I?</h3>
+
+                        <p>
+                            I am a B.Com IT student with an interest in technology,
+                            programming, web development, and artificial intelligence.
+                        </p>
+
+                        <p>
+                            I enjoy learning new technologies and developing creative
+                            projects that improve my technical and professional skills.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SKILLS -->
+        <section id="skills">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <h2>My Skills</h2>
+
+                    <p>
+                        Technologies I am learning
+                    </p>
+
+                </div>
+
+
+                <div class="skills-container">
+
+                    <article class="skill-card">
+
+                        <h3>HTML</h3>
+
+                        <p>
+                            Creating structured and responsive web pages.
+                        </p>
+
+                    </article>
+
+
+                    <article class="skill-card">
+
+                        <h3>CSS</h3>
+
+                        <p>
+                            Designing modern and responsive websites.
+                        </p>
+
+                    </article>
+
+
+                    <article class="skill-card">
+
+                        <h3>JavaScript</h3>
+
+                        <p>
+                            Adding interactive features to websites.
+                        </p>
+
+                    </article>
+
+
+                    <article class="skill-card">
+
+                        <h3>Python</h3>
+
+                        <p>
+                            Developing programs and solving problems.
+                        </p>
+
+                    </article>
+
+
+                    <article class="skill-card">
+
+                        <h3>Git &amp; GitHub</h3>
+
+                        <p>
+                            Managing and sharing projects using GitHub.
+                        </p>
+
+                    </article>
+
+
+                    <article class="skill-card">
+
+                        <h3>AI Technologies</h3>
+
+                        <p>
+                            Exploring artificial intelligence and modern technologies.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECTS -->
+        <section id="projects">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <h2>My Projects</h2>
+
+                    <p>
+                        Some of my work
+                    </p>
+
+                </div>
+
+
+                <div class="projects-container">
+
+                    <article class="project-card">
+
+                        <h3>Portfolio Website</h3>
+
+                        <p>
+                            A professional personal portfolio website created using
+                            HTML, CSS, and JavaScript.
+                        </p>
+
+                        <a href="#">
+                            View Project →
+                        </a>
+
+                    </article>
+
+
+                    <article class="project-card">
+
+                        <h3>Student Management System</h3>
+
+                        <p>
+                            A simple Python project designed to manage student records.
+                        </p>
+
+                        <a href="#">
+                            View Project →
+                        </a>
+
+                    </article>
+
+
+                    <article class="project-card">
+
+                        <h3>Web Development Project</h3>
+
+                        <p>
+                            A responsive website project created using HTML and CSS.
+                        </p>
+
+                        <a href="#">
+                            View Project →
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+        <section id="contact">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <h2>Contact Me</h2>
+
+                    <p>
+                        Let’s connect
+                    </p>
+
+                </div>
+
+
+                <div class="contact-container">
+
+                    <!-- Contact Form -->
+                    <form class="contact-form">
+
+                        <label>
+
+                            <span>Your name</span>
+
+                            <input
+                                type="text"
+                                name="name"
+                                required>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>Your email</span>
+
+                            <input
+                                type="email"
+                                name="email"
+                                required>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>Your message</span>
+
+                            <textarea
+                                name="message"
+                                required></textarea>
+
+                        </label>
+
+
+                        <button
+                            type="submit"
+                            class="btn">
+                            Send Message
+                        </button>
+
+                    </form>
+
+
+                    <!-- Social Links -->
+                    <div class="social-links">
+
+                        <a
+                            href="https://www.linkedin.com/in/midun-shankar-k-46974031a"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            LinkedIn
+                        </a>
+
+
+                        <a
+                            href="https://github.com/Midunshankar"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            GitHub
+                        </a>
+
+
+                        <a href="mailto:midunshankar2007@gmail.com">
+                            Email
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © <span id="current-year"></span>
+            Midun Shankar K. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
 </body>
+
 </html>
