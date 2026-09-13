@@ -8,9 +8,14 @@
   --shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
 }
 
+/* =========================
+   RESET
+========================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 html {
@@ -34,6 +39,10 @@ ul {
   list-style: none;
 }
 
+img {
+  max-width: 100%;
+}
+
 section {
   padding: 100px 24px;
   position: relative;
@@ -46,14 +55,17 @@ section {
   margin: auto;
 }
 
-/* Navigation */
+/* =========================
+   NAVIGATION
+========================= */
 
 header {
   position: fixed;
   inset: 0 0 auto;
-  z-index: 10;
+  z-index: 1000;
   background: rgba(255, 255, 255, 0.86);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: box-shadow 0.3s, background 0.3s;
 }
 
@@ -85,6 +97,7 @@ header.scrolled {
 .nav-links a {
   color: var(--text);
   font-weight: 700;
+  transition: color 0.2s;
 }
 
 .nav-links a:hover,
@@ -110,9 +123,16 @@ header.scrolled {
   height: 42px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.55);
+  transition: transform 0.2s, background 0.2s;
 }
 
-/* Hero */
+#theme-toggle:hover {
+  transform: scale(1.08);
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
   min-height: 100vh;
@@ -154,6 +174,16 @@ header.scrolled {
   margin-bottom: 26px;
 }
 
+/* =========================
+   BUTTONS
+========================= */
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .btn {
   display: inline-block;
   padding: 12px 22px;
@@ -163,12 +193,18 @@ header.scrolled {
   background: var(--accent);
   color: white;
   font-weight: 700;
-  transition: transform 0.2s, background 0.2s;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background 0.2s,
+    color 0.2s,
+    box-shadow 0.2s;
 }
 
 .btn:hover {
   background: var(--accent-dark);
   transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.15);
 }
 
 .btn-outline {
@@ -176,13 +212,38 @@ header.scrolled {
   color: var(--accent);
 }
 
+.btn-outline:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* Resume Download Button */
+
+.download-resume {
+  background: var(--accent);
+  color: white;
+}
+
+.download-resume:hover {
+  background: var(--accent-dark);
+}
+
+/* =========================
+   PROFILE IMAGE
+========================= */
+
 .profile-circle {
   width: 285px;
   height: 285px;
   padding: 8px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), #a78bfa);
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    #a78bfa
+  );
   box-shadow: var(--shadow);
+  flex-shrink: 0;
 }
 
 .profile-img {
@@ -194,7 +255,9 @@ header.scrolled {
   background: #dbeafe;
 }
 
-/* Sections */
+/* =========================
+   SECTION TITLE
+========================= */
 
 .section-title {
   margin-bottom: 42px;
@@ -213,6 +276,10 @@ header.scrolled {
   color: var(--muted);
 }
 
+/* =========================
+   COMMON CARDS
+========================= */
+
 .about-text,
 .skill-card,
 .project-card,
@@ -222,6 +289,10 @@ header.scrolled {
   border-radius: 14px;
   box-shadow: var(--shadow);
 }
+
+/* =========================
+   ABOUT
+========================= */
 
 .about-text {
   max-width: 780px;
@@ -240,6 +311,10 @@ header.scrolled {
   margin-top: 14px;
 }
 
+/* =========================
+   SKILLS
+========================= */
+
 .skills-container,
 .projects-container {
   display: grid;
@@ -250,13 +325,20 @@ header.scrolled {
 .skill-card,
 .project-card {
   padding: 26px;
-  transition: transform 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .skill-card:hover,
 .project-card:hover {
   transform: translateY(-6px);
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.16);
 }
+
+/* =========================
+   PROJECTS
+========================= */
 
 .project-card a {
   color: var(--accent);
@@ -265,7 +347,13 @@ header.scrolled {
   margin-top: 18px;
 }
 
-/* Contact */
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   CONTACT
+========================= */
 
 .contact-container {
   max-width: 700px;
@@ -293,6 +381,14 @@ textarea {
   background: rgba(255, 255, 255, 0.75);
   border: 1px solid var(--border);
   border-radius: 8px;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 textarea {
@@ -304,6 +400,10 @@ textarea {
   width: max-content;
   cursor: pointer;
 }
+
+/* =========================
+   SOCIAL LINKS
+========================= */
 
 .social-links {
   display: flex;
@@ -317,6 +417,19 @@ textarea {
   font-weight: 700;
 }
 
+.social-links a {
+  transition: transform 0.2s, color 0.2s;
+}
+
+.social-links a:hover {
+  transform: translateY(-2px);
+  color: var(--accent-dark);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
 footer {
   padding: 25px;
   text-align: center;
@@ -324,12 +437,16 @@ footer {
   color: white;
 }
 
-/* Scroll animation */
+/* =========================
+   SCROLL ANIMATION
+========================= */
 
 .reveal {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.7s, transform 0.7s;
+  transition:
+    opacity 0.7s,
+    transform 0.7s;
 }
 
 .reveal.show {
@@ -337,7 +454,9 @@ footer {
   transform: none;
 }
 
-/* Theme backgrounds */
+/* =========================
+   BACKGROUND ANIMATION
+========================= */
 
 .bg-animation {
   position: fixed;
@@ -352,14 +471,27 @@ footer {
   position: absolute;
 }
 
+/* =========================
+   MORNING THEME
+========================= */
+
 body.morning {
   --accent: #b45309;
   --accent-dark: #92400e;
   --text: #3b2a00;
   --muted: #6b560e;
   --surface: rgba(255, 255, 255, 0.55);
-  background: linear-gradient(#fff8d6, #ffd66b);
+
+  background:
+    linear-gradient(
+      #fff8d6,
+      #ffd66b
+    );
 }
+
+/* =========================
+   AFTERNOON THEME
+========================= */
 
 body.afternoon {
   --accent: #0369a1;
@@ -367,8 +499,17 @@ body.afternoon {
   --text: #17324d;
   --muted: #31536f;
   --surface: rgba(255, 255, 255, 0.55);
-  background: linear-gradient(#dff3ff, #a9c9df);
+
+  background:
+    linear-gradient(
+      #dff3ff,
+      #a9c9df
+    );
 }
+
+/* =========================
+   EVENING THEME
+========================= */
 
 body.evening {
   --accent: #93c5fd;
@@ -377,8 +518,17 @@ body.evening {
   --muted: #cbd5e1;
   --surface: rgba(15, 23, 42, 0.58);
   --border: rgba(165, 180, 252, 0.28);
-  background: linear-gradient(#1e3a5f, #0f172a);
+
+  background:
+    linear-gradient(
+      #1e3a5f,
+      #0f172a
+    );
 }
+
+/* =========================
+   NIGHT THEME
+========================= */
 
 body.night {
   --accent: #a78bfa;
@@ -387,13 +537,23 @@ body.night {
   --muted: #cbd5e1;
   --surface: rgba(15, 23, 42, 0.62);
   --border: rgba(196, 181, 253, 0.25);
-  background: linear-gradient(135deg, #020617, #1e1b4b);
+
+  background:
+    linear-gradient(
+      135deg,
+      #020617,
+      #1e1b4b
+    );
 }
+
+/* Dark Header */
 
 body.evening header,
 body.night header {
   background: rgba(2, 6, 23, 0.78);
 }
+
+/* Dark Input */
 
 body.evening input,
 body.evening textarea,
@@ -402,13 +562,18 @@ body.night textarea {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Evening rain */
+/* =========================
+   EVENING RAIN
+========================= */
 
 body.evening .bg-animation > span {
   display: block;
   width: 2px;
   height: 80px;
-  background: linear-gradient(transparent, #93c5fd);
+  background: linear-gradient(
+    transparent,
+    #93c5fd
+  );
   animation: rain 1.4s linear infinite;
 }
 
@@ -433,12 +598,18 @@ body.evening .bg-animation > span:nth-child(4) {
 }
 
 @keyframes rain {
+  from {
+    transform: translateY(-100px);
+  }
+
   to {
     transform: translateY(110vh);
   }
 }
 
-/* Night stars */
+/* =========================
+   NIGHT STARS
+========================= */
 
 body.night .bg-animation > span {
   display: block;
@@ -474,15 +645,24 @@ body.night .bg-animation > span:nth-child(4) {
 }
 
 @keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
   50% {
     opacity: 0.2;
     transform: scale(0.5);
   }
 }
 
-/* Responsive layout */
+/* =========================
+   RESPONSIVE - TABLET
+========================= */
 
 @media (max-width: 800px) {
+
   .menu-btn {
     display: block;
     order: 2;
@@ -494,13 +674,19 @@ body.night .bg-animation > span:nth-child(4) {
 
   .nav-links {
     display: none;
+
     position: absolute;
     top: 76px;
     left: 0;
+
     width: 100%;
+
     padding: 24px;
+
     flex-direction: column;
+
     background: inherit;
+
     box-shadow: var(--shadow);
   }
 
@@ -514,13 +700,26 @@ body.night .bg-animation > span:nth-child(4) {
     gap: 35px;
   }
 
+  .hero-content {
+    max-width: 700px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
   .skills-container,
   .projects-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* =========================
+   RESPONSIVE - MOBILE
+========================= */
+
 @media (max-width: 520px) {
+
   section {
     padding: 76px 18px;
   }
@@ -533,9 +732,25 @@ body.night .bg-animation > span:nth-child(4) {
     font-size: 1.1rem;
   }
 
+  .hero {
+    padding-top: 110px;
+  }
+
   .profile-circle {
     width: 220px;
     height: 220px;
+  }
+
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero h2 {
+    font-size: 1.3rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
   }
 
   .skills-container,
@@ -543,9 +758,71 @@ body.night .bg-animation > span:nth-child(4) {
     grid-template-columns: 1fr;
   }
 
+  .about-text,
+  .contact-container {
+    padding: 24px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .btn {
     display: block;
     width: max-content;
-    margin: 10px auto;
+    margin: 8px auto;
+  }
+
+  .social-links {
+    gap: 15px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 360px) {
+
+  .navbar {
+    padding: 10px 14px;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .profile-circle {
+    width: 190px;
+    height: 190px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+/* =========================
+   REDUCE MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
