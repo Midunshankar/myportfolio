@@ -905,8 +905,14 @@ body.night .bg-animation > span:nth-child(4) {
         opacity: 0;
     }
 }
-
-/* Show only in Night theme */
-body:not(.night) .shooting-stars {
-    display: none;
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 14px;
+    border-top: 1px solid #ddd;
+}
+body.dark-mode .footer {
+    border-top: 1px solid #444;
+    color: #ccc;
 }
